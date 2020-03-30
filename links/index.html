@@ -13,13 +13,11 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
   <meta name="author" content="cloudray">
   <meta name="keywords" content="">
-  <title>LinksWelcome to cloudray blogcloudray</title>
+  <title>Links_cloudray</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -45,7 +43,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -66,7 +64,7 @@
           
           
           <li class="nav-item">
-            <a class="nav-link" href="//">Home</a>
+            <a class="nav-link" href="/tags/">标签</a>
           </li>
         
           
@@ -74,7 +72,7 @@
           
           
           <li class="nav-item">
-            <a class="nav-link" href="/archives/">Archives</a>
+            <a class="nav-link" href="/about/">关于</a>
           </li>
         
           
@@ -82,23 +80,7 @@
           
           
           <li class="nav-item">
-            <a class="nav-link" href="/categories/">Categories</a>
-          </li>
-        
-          
-          
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/tags/">Tags</a>
-          </li>
-        
-          
-          
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">About</a>
+            <a class="nav-link" href="/links/">友链</a>
           </li>
         
         
@@ -113,7 +95,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('/img/%E5%A4%A7%E4%BD%AC.gif') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask rgba-black-light flex-center">
@@ -126,6 +108,10 @@
           </div>
 
           
+            <div class="scroll-down-bar">
+              <i class="fas fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
         </div>
       </div>
     </div>
@@ -135,7 +121,7 @@
     
       <div class="container nopadding-md">
         <div class="py-5 z-depth-3" id="board"
-          >
+          style=margin-top:0>
           
           <div class="container">
             <div class="row">
@@ -147,16 +133,16 @@
     
     
     <div class="card col-lg-4 col-md-6 col-sm-12">
-      <a href="https://hexo.fluid-dev.com/docs/" class="card-body" target="_blank" rel="noopener">
+      <a href="https://lemonhubs.github.io/" class="card-body" target="_blank" rel="noopener">
         <div class="card-content">
           
             <div class="link-avatar my-auto">
-              <img src="/img/favicon.png" srcset="/img/loading.gif" alt="Fluid Docs" />
+              <img src="/img/dele.jpg" srcset="/img/loading.gif" alt="Fluid Docs" />
             </div>
           
           <div class="link-text">
             <div class="link-title">Fluid Docs</div>
-            <div class="link-intro">主题使用指南</div>
+            <div class="link-intro">dele</div>
           </div>
         </div>
       </a>
@@ -165,16 +151,16 @@
     
     
     <div class="card col-lg-4 col-md-6 col-sm-12">
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" class="card-body" target="_blank" rel="noopener">
+      <a href="https://heathhou.github.io/" class="card-body" target="_blank" rel="noopener">
         <div class="card-content">
           
             <div class="link-avatar my-auto">
-              <img src="/img/favicon.png" srcset="/img/loading.gif" alt="Fluid Repo" />
+              <img src="/img/HeathHhou.jpg" srcset="/img/loading.gif" alt="Fluid Repo" />
             </div>
           
           <div class="link-text">
             <div class="link-title">Fluid Repo</div>
-            <div class="link-intro">主题 GitHub 仓库</div>
+            <div class="link-intro">诸葛借剑</div>
           </div>
         </div>
       </a>
@@ -239,28 +225,6 @@
   
 
   
-    <!-- APlayer 音乐播放器 -->
-    <div id="aplayer"></div>
-    <script defer src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js" ></script>
-<link  rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
-<script type="text/javascript">
-  var oldLoad = window.onload;
-  window.onload = function () {
-    new APlayer({
-      container: document.getElementById('aplayer'),
-      fixed: true,
-      autoplay: 'false' === 'true',
-      loop: 'all',
-      order: 'list',
-      theme: '#b7daff',
-      preload: 'none',
-      audio: [{"name":"星空","artist":"文武贝","url":"/songs/文武贝 - 星空.mp3","cover":"/img/星空.jpg"},{"name":"Rain","artist":"Circadin Eyes","url":"/songs/Circadian Eyes - Rain.mp3","cover":"/img/Rain.jpg"}]
-    });
-    oldLoad && oldLoad();
-  }
-</script>
-
-  
 
   
 
@@ -272,6 +236,23 @@
       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
     </div>
     
+  <div>
+    
+      <!-- 不蒜子统计PV -->
+      
+      <span id="busuanzi_container_site_pv" style="display: none">
+      总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    </span>
+    
+    
+      <!-- 不蒜子统计UV -->
+      
+      <span id="busuanzi_container_site_uv" style="display: none">
+      总访客数 <span id="busuanzi_value_site_uv"></span> 人
+    </span>
+    
+  </div>
+
 
     
 
@@ -300,6 +281,8 @@
 
 
 
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
 
 
 
@@ -322,7 +305,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Links&nbsp;",
+        "大佬们的世界&nbsp;",
       ],
       cursorChar: "",
       typeSpeed: 50,
