@@ -4,11 +4,24 @@
   
   
   <entry>
+    <title>关于百度深度学习7日入门-CV疫情特辑的心得体会</title>
+    <link href="/2020/04/07/%E5%85%B3%E4%BA%8E%E7%99%BE%E5%BA%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A07%E6%97%A5%E5%85%A5%E9%97%A8-CV%E7%96%AB%E6%83%85%E7%89%B9%E8%BE%91%E7%9A%84%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A/"/>
+    <url>/2020/04/07/%E5%85%B3%E4%BA%8E%E7%99%BE%E5%BA%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A07%E6%97%A5%E5%85%A5%E9%97%A8-CV%E7%96%AB%E6%83%85%E7%89%B9%E8%BE%91%E7%9A%84%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A/</url>
+    
+    <content type="html"><![CDATA[<p>&emsp;本次参加了百度飞浆的7天训练营，最初的原因是从智能车卓晴老师那里引进来的，知道了这次课程和AIstudio这个平台，同时也因为自己也一直都想接触AI方面的知识和培训，但是一直没有找到合适的机会切入这一方面（当然，也是因为自己的拖延）。正好本届智能车和AI结合的颇为紧密，我也就下了决心完成这次训练营。<br>&emsp;此次训练营，要说我个人的最大收获，便是确实的了解和接触了那些神经网络和深度学习，而不是只停留在科普的层面，实践了DNN，CNN，vgg之类的网络结构，虽然作业除了第一天，后面几天的作业完成的都非常勉强。。。也让我再次明白了理论基础的重要性，基础理论不明白，后面实践真的还是挺难的。</p><p>&emsp;这几天我接触了许多的概念和基础术语，但作为一名完全没有接触过神经网络的外行，却依然有很多听不懂的，在这篇博客也记录一些，以下是我目前查询过的一些基础概念或术语简要概括，如果有兴趣可以自行去查询。</p><p><strong>NN</strong>：神经网络<br><strong>DNN</strong>：狭义上指全连接神经网络，广义上可以说隐层达到一定个数的都是深度神经网络<br><strong>CNN</strong>：卷积神经网络<br><strong>RNN</strong>：循环神经网络<br><img src="https://img-blog.csdnimg.cn/2020040715470370.png#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><strong>前馈神经网络</strong>：是一种最简单的神经网络，各神经元分层排列。每个神经元只与前一层的神经元相连。接收前一层的输出，并输出给下一层．各层间没有反馈</p><p><strong>过拟合</strong>：过拟合是指为了得到一致假设而使假设变得过度严格。避免过拟合是分类器设计中的一个核心任务。通常采用增大数据量和测试样本集的方法对分类器性能进行评价。</p><p><strong>全局最优</strong>：针对一定条件/环境下的一个问题/目标，若一项决策和所有解决该问题的决策相比是最优的，就可以被称为全局最优。<br><strong>局部最优</strong>：局部最优，是指对于一个问题的解在一定范围或区域内最优，或者说解决问题或达成目标的手段在一定范围或限制内最优。<br>可以看到，局部最优不一定是全局最优，全局最优一定是局部最优。</p><p><strong>学习率(Learning rate)</strong>：作为监督学习以及深度学习中重要的超参，其决定着目标函数能否收敛到局部最小值以及何时收敛到最小值。合适的学习率能够使目标函数在合适的时间内收敛到局部最小值。</p><p><strong>知识蒸馏</strong>：<br>先训练一个teacher网络，然后使用这个teacher网络的输出和数据的真实标签去训练student网络。知识蒸馏，可以用来将网络从大网络转化成一个小网络，并保留接近于大网络的性能；也可以将多个网络的学到的知识转移到一个网络中，使得单个网络的性能接近类似的结果。</p><blockquote><p>作者：Ivan Yan 链接：<a href="https://zhuanlan.zhihu.com/p/81467832" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/81467832</a> 来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p></blockquote><p><strong>FLOPs</strong><br> 是floating point of operations的缩写，是浮点运算次数，可以用来衡量算法/模型复杂度。<br><strong>Pooling</strong>：池化，降低维度，类似于等比例缩小图片尺度，减少。</p><p><strong>迁移学习(Transfer learning)</strong> ：<br>是将在某个领域或任务上学习到的知识或模式应用到不同但相关的领域或问题中。</p><p><strong>Int8量化</strong><br>就是将原本大模型的’float32’转化为’int8’，使其模型尺寸更小、推断更快、耗电更低。唯一的缺点，模型精度会下降。</p><p><strong>NAS</strong>：<br>神经网络架构搜索，一种神经网络算法,<br>NAS的原理是给定一个称为搜索空间的候选神经网络结构集合，用某种策略从中搜索出最优网络结构。神经网络结构的优劣即性能用某些指标如精度、速度来度量，称为性能评估。这一过程如下图所示。<br>就是优化参数<br><img src="https://img-blog.csdnimg.cn/20200407154739280.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>my first blog</title>
     <link href="/2020/03/17/my-first-blog/"/>
     <url>/2020/03/17/my-first-blog/</url>
     
-    <content type="html"><![CDATA[<p>##��һ��</p><p>����</p><hr><p>##�ڶ���</p><p>����</p><hr>]]></content>
+    <content type="html"><![CDATA[<p>##第一章</p><p>内容</p><hr><p>##第二章</p><p>内容</p><hr>]]></content>
     
     
     
