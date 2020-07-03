@@ -4,7 +4,9 @@
 
 
 
-
+<div id="music163player">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1206866&auto=0&height=66"></iframe>
+</div>
 <head>
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
@@ -19,26 +21,25 @@
   <meta name="keywords" content="">
   <title>cloudray</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/mdbootstrap/4.13.0/css/mdb.min.css" />
-<link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/3.0.1/github-markdown.min.css" />
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
 
 
-  <link  rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css" />
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
 
 <link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link defer rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
 
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script  src="/js/utils.js" ></script>
 <meta name="generator" content="Hexo 4.2.0"></head>
 
 
@@ -47,7 +48,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>cloudray</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Cloudray</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -63,17 +64,37 @@
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/about/">关于</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-filjiel"></i>
+                主页
+              </a>
+            </li>
+          
         
           
           
           
           
-          <li class="nav-item">
-            <a class="nav-link" href="/links/">友链</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
         
         
           <li class="nav-item" id="search-btn">
@@ -86,12 +107,12 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/img/%E5%9C%B0%E7%90%83.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask rgba-black-light flex-center">
-          <div class="container text-center white-text fadeInUp">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
@@ -101,7 +122,7 @@
 
           
             <div class="scroll-down-bar">
-              <i class="fas fa-angle-down scroll-down-arrow"></i>
+              <i class="iconfont icon-arrowdown"></i>
             </div>
           
         </div>
@@ -112,7 +133,7 @@
   <main>
     
       <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board"
+        <div class="py-5" id="board"
           style=margin-top:0>
           
           <div class="container">
@@ -125,24 +146,21 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/05/01/%E7%99%BE%E5%BA%A6%E9%A3%9E%E6%A1%A8AI+python%E5%9F%BA%E7%A1%80%E6%89%93%E5%8D%A1%E8%90%A5%E6%80%BB%E7%BB%93%E5%BF%83%E5%BE%97/">
-        <p class="h4 index-header">百度飞桨AI+python基础打卡营总结心得</p>
-      </a>
+      <a class="index-header" href="/2020/05/01/%E7%99%BE%E5%BA%A6%E9%A3%9E%E6%A1%A8AI+python%E5%9F%BA%E7%A1%80%E6%89%93%E5%8D%A1%E8%90%A5%E6%80%BB%E7%BB%93%E5%BF%83%E5%BE%97/">百度飞桨AI+python基础打卡营总结心得</a>
 
-      <a href="/2020/05/01/%E7%99%BE%E5%BA%A6%E9%A3%9E%E6%A1%A8AI+python%E5%9F%BA%E7%A1%80%E6%89%93%E5%8D%A1%E8%90%A5%E6%80%BB%E7%BB%93%E5%BF%83%E5%BE%97/">
+      <a href="/2020/05/01/%E7%99%BE%E5%BA%A6%E9%A3%9E%E6%A1%A8AI+python%E5%9F%BA%E7%A1%80%E6%89%93%E5%8D%A1%E8%90%A5%E6%80%BB%E7%BB%93%E5%BF%83%E5%BE%97/" class="index-excerpt">
         
         
           
         
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">此次百度飞桨的python+AI的小白基础营，对我个人最大的收获便是在python的学习路上更进了一步步。参加训练营之前，学过C语言，python也大概学了好几个月，但中间中断过很多次，直到这次疫情，又重拾起了python的学习，之前参加过百度飞桨的疫情CV特辑，但只是非常勉强的完成了作业。此次的小白营，将我的学习从python的基础扩展到了爬虫和数据分析，也算是为后续的学习开了一个头。这篇总结心得主要是我对此次大作业的个人分析和总结（其它作业在另一篇博客里），如有错误，还望指正。
-综合大作业第一步：爱奇艺《青春有你2》评论数据爬取(参考链接：https://www.iqiyi.com/v_1</div>
-        </div>
+        <div>此次百度飞桨的python+AI的小白基础营，对我个人最大的收获便是在python的学习路上更进了一步步。参加训练营之前，学过C语言，python也大概学了好几个月，但中间中断过很多次，直到这次疫情，又重拾起了python的学习，之前参加过百度飞桨的疫情CV特辑，但只是非常勉强的完成了作业。此次的小白营，将我的学习从python的基础扩展到了爬虫和数据分析，也算是为后续的学习开了一个头。这篇总结心</div>
       </a>
 
-      <div class="index-btm">
+      <div class="index-btm post-metas">
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-01&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-05-01
+          </div>
         
         
         
@@ -154,23 +172,21 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/04/07/%E5%85%B3%E4%BA%8E%E7%99%BE%E5%BA%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A07%E6%97%A5%E5%85%A5%E9%97%A8-CV%E7%96%AB%E6%83%85%E7%89%B9%E8%BE%91%E7%9A%84%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A/">
-        <p class="h4 index-header">关于百度深度学习7日入门-CV疫情特辑的心得体会</p>
-      </a>
+      <a class="index-header" href="/2020/04/07/%E5%85%B3%E4%BA%8E%E7%99%BE%E5%BA%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A07%E6%97%A5%E5%85%A5%E9%97%A8-CV%E7%96%AB%E6%83%85%E7%89%B9%E8%BE%91%E7%9A%84%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A/">关于百度深度学习7日入门-CV疫情特辑的心得体会</a>
 
-      <a href="/2020/04/07/%E5%85%B3%E4%BA%8E%E7%99%BE%E5%BA%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A07%E6%97%A5%E5%85%A5%E9%97%A8-CV%E7%96%AB%E6%83%85%E7%89%B9%E8%BE%91%E7%9A%84%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A/">
+      <a href="/2020/04/07/%E5%85%B3%E4%BA%8E%E7%99%BE%E5%BA%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A07%E6%97%A5%E5%85%A5%E9%97%A8-CV%E7%96%AB%E6%83%85%E7%89%B9%E8%BE%91%E7%9A%84%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A/" class="index-excerpt">
         
         
           
         
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">&emsp;本次参加了百度飞浆的7天训练营，最初的原因是从智能车卓晴老师那里引进来的，知道了这次课程和AIstudio这个平台，同时也因为自己也一直都想接触AI方面的知识和培训，但是一直没有找到合适的机会切入这一方面（当然，也是因为自己的拖延）。正好本届智能车和AI结合的颇为紧密，我也就下了决心完成这次训练营。&emsp;此次训练营，要说我个人的最大收获，便是确实的了解和接触了那些神经网络和深度学习，而不是只停留在科普的层面，实践了DNN，CNN，vgg之类的网络结构，虽然作业除了第一天，后面几天的作业完成的都非常勉强。。。也让我再次明白了理论基础的重要性，基础理论不明白，后面实践真的还是挺难</div>
-        </div>
+        <div>&emsp;本次参加了百度飞浆的7天训练营，最初的原因是从智能车卓晴老师那里引进来的，知道了这次课程和AIstudio这个平台，同时也因为自己也一直都想接触AI方面的知识和培训，但是一直没有找到合适的机会切入这一方面（当然，也是因为自己的拖延）。正好本届智能车和AI结合的颇为紧密，我也就下了决心完成这次训练营。&emsp;此次训练营，要说我个人的最大收获，便是确实的了解和接触了那些神经网络和深度学</div>
       </a>
 
-      <div class="index-btm">
+      <div class="index-btm post-metas">
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-04-07&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-04-07
+          </div>
         
         
         
@@ -182,29 +198,27 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/03/17/my-first-blog/">
-        <p class="h4 index-header">my first blog</p>
-      </a>
+      <a class="index-header" href="/2020/03/17/my-first-blog/">my first blog</a>
 
-      <a href="/2020/03/17/my-first-blog/">
+      <a href="/2020/03/17/my-first-blog/" class="index-excerpt">
         
         
           
         
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">##第一章
+        <div>##第一章
 内容
 
 ##第二章
 内容
 
 </div>
-        </div>
       </a>
 
-      <div class="index-btm">
+      <div class="index-btm post-metas">
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-17&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-03-17
+          </div>
         
         
         
@@ -216,26 +230,22 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
-      <a href="/2020/03/17/hello-world/">
-        <p class="h4 index-header">Hello World</p>
-      </a>
+      <a class="index-header" href="/2020/03/17/hello-world/">Hello World</a>
 
-      <a href="/2020/03/17/hello-world/">
+      <a href="/2020/03/17/hello-world/" class="index-excerpt">
         
         
           
         
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post$ hexo new &quot;My New Post&quot;
-More info: Writing
-Run server$ hexo server</div>
-        </div>
+        <div>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick</div>
       </a>
 
-      <div class="index-btm">
+      <div class="index-btm post-metas">
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-17&nbsp;&nbsp;
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>&nbsp;2020-03-17
+          </div>
         
         
         
@@ -256,8 +266,8 @@ Run server$ hexo server</div>
   </main>
 
   
-    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
-      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
   
 
@@ -292,25 +302,33 @@ Run server$ hexo server</div>
   <footer class="mt-5">
   <div class="text-center py-3">
     <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
       <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
     </div>
     
-  <div>
+  <div class="statistics">
     
-      <!-- 不蒜子统计PV -->
+    
+
+    
       
-      <span id="busuanzi_container_site_pv" style="display: none">
-      总访问量 <span id="busuanzi_value_site_pv"></span> 次
-    </span>
-    
-    
-      <!-- 不蒜子统计UV -->
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
       
-      <span id="busuanzi_container_site_uv" style="display: none">
-      总访客数 <span id="busuanzi_value_site_uv"></span> 人
-    </span>
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
     
   </div>
 
@@ -320,22 +338,21 @@ Run server$ hexo server</div>
     
   </div>
 </footer>
-
 <div id="music163player">
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1206866&auto=0&height=66"></iframe>
 </div>
-
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/popper.js/1.16.1/umd/popper.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-<script  src="https://cdn.staticfile.org/mdbootstrap/4.13.0/js/mdb.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
 <script  src="/js/main.js" ></script>
 
+<!-- Plugins -->
 
-  <script  src="/js/lazyload.js" ></script>
 
-
+  
+    <script  src="/js/lazyload.js" ></script>
+  
 
 
 
@@ -344,24 +361,11 @@ Run server$ hexo server</div>
 
 
 
-
-
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
 
-<!-- Plugins -->
-
-
-
-  <script  src="https://cdn.staticfile.org/prettify/188.0.0/prettify.min.js" ></script>
-  <script>
-    $(document).ready(function () {
-      $('pre').addClass('prettyprint  linenums');
-      prettyPrint();
-    })
-  </script>
 
 
 
@@ -385,21 +389,6 @@ Run server$ hexo server</div>
 
 
 
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
-      
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
-  </script>
-
 
 
   <script  src="/js/local-search.js" ></script>
@@ -407,24 +396,14 @@ Run server$ hexo server</div>
     var path = "/local-search.xml";
     var inputArea = document.querySelector("#local-search-input");
     inputArea.onclick = function () {
-      getSearchFile(path);
+      searchFunc(path, 'local-search-input', 'local-search-result');
       this.onclick = null
     }
   </script>
 
 
 
-  <script defer src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <script>
-    $("#post img:not(.no-zoom img, img[no-zoom])").each(
-      function () {
-        var element = document.createElement("a");
-        $(element).attr("data-fancybox", "images");
-        $(element).attr("href", $(this).attr("src"));
-        $(this).wrap(element);
-      }
-    );
-  </script>
+
 
 
 
@@ -480,6 +459,12 @@ Run server$ hexo server</div>
       }(window, document);
     </script>
   
+
+
+
+
+
+
 
 
 
