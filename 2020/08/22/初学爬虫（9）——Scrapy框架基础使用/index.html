@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="cloudray">
   <meta name="keywords" content="">
-  <title>初学爬虫（8）——scrapy框架理论 - cloudray</title>
+  <title>初学爬虫（9）——Scrapy框架基础使用 - cloudray</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -165,8 +165,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-08-20 18:10">
-      August 20, 2020 pm
+    <time datetime="2020-08-22 20:20">
+      August 22, 2020 pm
     </time>
   </div>
 
@@ -176,7 +176,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.6k 字
+      1.5k 字
     </span>
   
 
@@ -222,70 +222,86 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：August 20, 2020 pm
+                  本文最后更新于：August 22, 2020 pm
                 
               </p>
             
             <article class="markdown-body">
-              <p><img src="https://img-blog.csdnimg.cn/2020082018093381.jpg#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+              <p><img src="https://img-blog.csdnimg.cn/20200822200037522.jpg#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
 <hr>
-<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>&emsp;Scrapy是一个适用爬取网站数据、提取结构性数据的应用程序框架，它可以应用在广泛领域：Scrapy 常应用在包括数据挖掘，信息处理或存储历史数据等一系列的程序中。通常我们可以很简单的通过 Scrapy 框架实现一个爬虫，抓取指定网站的内容或图片。<br>&emsp;尽管Scrapy原本是设计用来屏幕抓取（更精确的说，是网络抓取），但它也可以用来访问API来提取数据。——百度百科<br><strong>Scrapy不是一个函数功能库，而是一个爬虫框架。<br>爬虫框架是实现爬虫功能的一个软件结构和功能组件集合。<br>爬虫框架是一个半成品，能够帮助用户实现专业网络爬虫。</strong></p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>通过pip install scrapy安装，安装好后，可以用scrapy - h测试。<br><img src="https://img-blog.csdnimg.cn/20200820175750388.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
-<h1 id="整体结构"><a href="#整体结构" class="headerlink" title="整体结构"></a>整体结构</h1><p>包含5个主要模块，和2个中间键模块，5+2结构形成scrapy框架。<br>在这5个模块之间，数据和用户提交的网络爬虫请求以及从网络上获取到的相关内容在这些结构中流动，形成了数据流。<br><img src="https://img-blog.csdnimg.cn/20200820175814238.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
-<h1 id="数据流"><a href="#数据流" class="headerlink" title="数据流"></a>数据流</h1><p>主要有3条数据流路径，<br>1 Engine从Spider处获得爬取请求(Request)。REQUESTS，可简单理解为URL。<br>2 Engine将爬取请求转发给Scheduler，用于调度。<br><img src="https://img-blog.csdnimg.cn/20200820175902426.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
-<p>3.Engine从Scheduler处获得下一个要爬取的请求。此时的请求是真实的，要去网络上爬取的请求。<br>4 Engine将爬取请求通过中间件发送给Downloader。连接互联网，并爬取相关网页。<br>5 爬取网页后，Downloader形成一个对象—响应（Response），通过中间件发给Engine<br>6 Engine将收到的响应通过中间件发送给Spider处理<br><img src="https://img-blog.csdnimg.cn/20200820175915915.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
-<p>7 Spider处理响应后产生爬取项（scraped Item）和新的爬取请求（Requests）给Engine。<br>8 Engine将爬取项（scraped Item）发送给Item Pipeline（框架出口）。<br>9 Engine将爬取请求（Requests）发送给Scheduler进行调度。从而为后期的数据处理以及再次请求网络爬虫请求提供新的数据来源。<br><img src="https://img-blog.csdnimg.cn/20200820175925581.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
-<p>Engine控制各模块数据流，不间断从Scheduler处获得爬取请求（Requests），直至请求为空，并将这个请求发送给Download。<br>框架入口：Spider的初始爬取请求<br>框架出口：Item Pipeline<br>整个框架的执行，<br>Spider向Engine发送第一个请求开始，<br>到Engine获得所有连接内容，处理后放到Item Pipeline结束。<br><img src="https://img-blog.csdnimg.cn/20200820175939393.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
-<p>Spider则提供整个框架访问所需的URL链接，同时要解析从网上获取的内容。<br>Item Pipeline对提取后的信息进行后处理。<br>由于整个框架，用户需要编写的只是一部分，故也将编写称为配置。<br><img src="https://img-blog.csdnimg.cn/20200820175949143.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
-<h1 id="结构解析"><a href="#结构解析" class="headerlink" title="结构解析"></a>结构解析</h1><p><strong>Engine</strong><br>(1) 控制所有模块之间的数据流。<br>(2) 根据条件触发事件。<br>不需要用户修改。<br><strong>Downloader</strong><br>根据请求下载网页。<br>功能简单且固定，不需要用户修改。<br><strong>Scheduler</strong><br>对所有爬取请求进行调度管理。当同一时间，有多个网络爬取请求时，安排顺序。<br>调度顺序较为固定，不需要用户修改。<br><img src="https://img-blog.csdnimg.cn/20200820180001206.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
-<p><strong>Downloader Middleware</strong><br>目的：实施Engine、Scheduler和Downloader之间进行用户可配置的控制。即可以对网络请求做出限制或修改（例如从访问百度变成访问谷歌）。<br>功能：修改、丢弃、新增请求（Request）或响应（Response）。<br>用户可以编写配置代码。</p>
-<p><strong>Spider</strong><br>(1) 解析Downloader返回的响应（Response）。<br>(2) 产生爬取项（scraped item）。<br>(3) 产生额外的爬取请求（Request）。<br>向整个框架提供了初始的访问链接，同时对爬取内容进行解析，产生新的爬取请求，提取数据。<br>需要用户编写配置代码。<br><strong>Item Pipelines</strong><br>(1) 以流水线方式处理Spider产生的爬取项。<br>(2) 由一组操作顺序组成，类似流水线，每个操作是一个Item Pipeline类型。<br>(3) 可能操作包括：清理、检验和查重爬取项中的HTML数据、将数据存储到数据库。<br>对于从网上爬取的内容，以Item Pipelines类型封装的信息，实现定制请求。<br>需要用户编写配置代码。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200820180015452.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
-<p><strong>Spider Middleware</strong><br>目的：对请求和爬取项的再处理。<br>功能：修改、丢弃、新增请求或爬取项。<br>用户可以编写配置代码。<br>主要配置模块为Spider和Item Pipelines。</p>
-<h1 id="Requests库和Scrapy爬虫的比较"><a href="#Requests库和Scrapy爬虫的比较" class="headerlink" title="Requests库和Scrapy爬虫的比较"></a>Requests库和Scrapy爬虫的比较</h1><p><strong>相同点：</strong><br>两者都可以进行页面请求和爬取，Python爬虫的两个重要技术路线<br>两者可用性都好，文档丰富，入门简单<br>两者都没有处理js、提交表单、应对验证码等功能（可扩展）<br><strong>不同点：</strong><br>Requests库|Scrapy爬虫<br>–|–|<br>页面级爬虫|网站级爬虫<br>功能库|框架<br>并发性考虑不足，性能较差|并发性好，性能较高<br>重点在于页面下载|重点在于爬虫结构<br>定制灵活|一般定制灵活，深度定制困难<br>上手十分简单|入门稍难<br>注：爬取性能需要结合实际情况考虑，很多网站会限制爬虫性能。</p>
-<p>非常小的需求，requests库<br>不太小的需求，Scrapy框架。例如对于一个网站周期性爬取和分析。<br>定制程度很高的需求（不考虑规模），自搭框架，requests &gt; Scrapy。</p>
-<h1 id="Scrapy常用命令"><a href="#Scrapy常用命令" class="headerlink" title="Scrapy常用命令"></a>Scrapy常用命令</h1><p>Scrapy是为持续运行设计的专业爬虫框架，提供操作的Scrapy命令行。<br>Scrapy是在通过命令行创建爬虫和运行的。<br>原因为：<br>更多是一个后台的爬虫框架<br>命令行（不是图形界面）更容易自动化，适合脚本控制。<br>本质上，Scrapy是给程序员用的，功能（而不是界面）更重要。</p>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>说明</th>
-<th>格式</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>startproject</td>
-<td>创建一个新工程</td>
-<td>scrapy startproject <name> [dir]</td>
-</tr>
-<tr>
-<td>genspider</td>
-<td>创建一个爬虫</td>
-<td>scrapy genspider [options] <name> <domain></td>
-</tr>
-<tr>
-<td>settings</td>
-<td>获得爬虫配置信息</td>
-<td>scrapy settings [options]</td>
-</tr>
-<tr>
-<td>crawl</td>
-<td>运行一个爬虫</td>
-<td>scrapy crawl <spider></td>
-</tr>
-<tr>
-<td>list</td>
-<td>列出工程中所有爬虫</td>
-<td>scrapy list</td>
-</tr>
-<tr>
-<td>shell</td>
-<td>启动URL调试命令行</td>
-<td>scrapy shell [url]</td>
-</tr>
-</tbody></table>
-<p>在scrapy框架下，一个工程是最大的单元，相当于一个scrapy框架。在scrapy框架中，可以有多个爬虫，每一个爬虫相当于spider模块。需要区分爬虫和工程。<br><strong>startproject ，genspider，crawl 是最常用的三个命令</strong></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>![`](<a href="https://img-blog.csdnimg.cn/20200820180022995.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" target="_blank" rel="noopener">https://img-blog.csdnimg.cn/20200820180022995.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center</a>)</p>
+<p>演示HTML页面地址：<a href="http://python123.io/ws/demo.html" target="_blank" rel="noopener">http://python123.io/ws/demo.html</a><br>文件名称：demo.html<br><img src="https://img-blog.csdnimg.cn/20200822200118595.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p><strong>应用Scrapy爬虫框架主要是编写配置型代码</strong></p>
+<h1 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h1><h2 id="步骤1：建立工程和目录结构"><a href="#步骤1：建立工程和目录结构" class="headerlink" title="步骤1：建立工程和目录结构"></a>步骤1：建立工程和目录结构</h2><p>建立一个工程文件（此处我的工程文件为demo123），打开windowns的cmd，输入scrapy startproject命令<br><img src="https://img-blog.csdnimg.cn/20200822200134985.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p>此时会在工程目录下生成一个文件夹和一个cfg文件，以下是其目录结构</p>
+<p><img src="https://img-blog.csdnimg.cn/20200822201137520.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200822201137515.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="步骤2：在工程中产生一个Scrapy爬虫"><a href="#步骤2：在工程中产生一个Scrapy爬虫" class="headerlink" title="步骤2：在工程中产生一个Scrapy爬虫"></a>步骤2：在工程中产生一个Scrapy爬虫</h2><p>进入工程目录，即创建工程后产生的目录（有scrapy.cfg文件的路径，此处是demo123里），然后执行scrapy genspider命令：</p>
+<p><img src="https://img-blog.csdnimg.cn/2020082220120930.jpg#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>此命令作用为，在./demo123/spiders里生成一个爬虫文件</p>
+<p><img src="https://img-blog.csdnimg.cn/20200822201158796.jpg#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>该命令作用：<br>(1) 生成一个名称为demo的spider<br>(2) 在spiders目录下增加代码文件demo.py<br>该命令仅用于生成demo.py，该文件也可以手工生成<br>默认文件内容如下：</p>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> scrapy
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoSpider</span><span class="hljs-params">(scrapy.Spider)</span>:</span><span class="hljs-comment"># 这个类必须继承为scrapy.Spider，名字任意</span>
+    name = <span class="hljs-string">'demo'</span> <span class="hljs-comment">#当前爬虫名字为demo</span>
+    allowed_domains = [<span class="hljs-string">'python123.io'</span>]<span class="hljs-comment">#用户提交给命令行的域名，指的是爬取时只能爬取这个域名以下的相关链接</span>
+    start_urls = [<span class="hljs-string">'http://python123.io/'</span>]<span class="hljs-comment">#以列表形式包含的一个或多个url，爬取的初始页面</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">parse</span><span class="hljs-params">(self, response)</span>:</span>
+        <span class="hljs-keyword">pass</span>
+<span class="hljs-comment">#parse()用于处理响应，解析内容形成字典，发现新的URL爬取请求</span></code></pre>
+
+<h2 id="步骤3：配置产生的spider爬虫"><a href="#步骤3：配置产生的spider爬虫" class="headerlink" title="步骤3：配置产生的spider爬虫"></a>步骤3：配置产生的spider爬虫</h2><p>修改上一步骤产生的spider文件，使其访问所需链接，爬取其内容。</p>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> scrapy
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoSpider</span><span class="hljs-params">(scrapy.Spider)</span>:</span><span class="hljs-comment"># 这个类必须继承为scrapy.Spider，名字任意</span>
+    name = <span class="hljs-string">'demo'</span><span class="hljs-comment">#当前爬虫名字为demo</span>
+    <span class="hljs-comment"># allowed_domains = ['python123.io']#用户提交给命令行的域名，指的是爬取时只能爬取这个域名以下的相关链接</span>
+    start_urls = [<span class="hljs-string">'http://python123.io/ws/demo.html'</span>]<span class="hljs-comment">#以列表形式包含的一个或多个url，是爬取的初始页面</span>
+    
+    <span class="hljs-comment">#此处方法为访问链接，并保存相关内容到html文件</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">parse</span><span class="hljs-params">(self, response)</span>:</span><span class="hljs-comment">#response相当于返回内容对象</span>
+    	fname = response.url.split(<span class="hljs-string">'/'</span>)[<span class="hljs-number">-1</span>] <span class="hljs-comment">#文件名</span>
+    	<span class="hljs-keyword">with</span> open(fname,<span class="hljs-string">'wb'</span>)<span class="hljs-keyword">as</span> f:
+    		f.write(response.body)
+    		self.log(<span class="hljs-string">'save file%s.'</span>%fname)
+<span class="hljs-comment">#parse()用于处理响应，解析内容形成字典，发现新的URL爬取请求</span></code></pre>
+
+<h2 id="步骤4：执行爬虫"><a href="#步骤4：执行爬虫" class="headerlink" title="步骤4：执行爬虫"></a>步骤4：执行爬虫</h2><p>在工程目录下，输入scrapy crawl命令<br><img src="https://img-blog.csdnimg.cn/20200822201328765.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p>实现效果：成功保存页面到demo.html文件中<br><img src="https://img-blog.csdnimg.cn/20200822201337595.jpg#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="yield关键字："><a href="#yield关键字：" class="headerlink" title="yield关键字："></a>yield关键字：</h2><p><strong>以上爬虫代码为简略版本，完整版如下：采用了生成器</strong></p>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> scrapy
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoSpider</span><span class="hljs-params">(scrapy.Spider)</span>:</span><span class="hljs-comment"># 这个类必须继承为scrapy.Spider，名字任意</span>
+    name = <span class="hljs-string">'demo'</span><span class="hljs-comment">#当前爬虫名字为demo</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">start_requests</span><span class="hljs-params">(self)</span>:</span>
+        start_urls = [
+                        <span class="hljs-string">'http://python123.io/ws/demo.html'</span>
+                      ]<span class="hljs-comment">#以列表形式包含的一个或多个url，是爬取的初始页面</span>
+        <span class="hljs-keyword">for</span> url <span class="hljs-keyword">in</span> urls:<span class="hljs-comment">#可以处理多个url</span>
+                <span class="hljs-keyword">yield</span> scrapy.Request(url=url,callback=self.parse)
+    <span class="hljs-comment">#此处方法为访问链接，并保存相关内容到html文件</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">parse</span><span class="hljs-params">(self, response)</span>:</span><span class="hljs-comment">#response相当于返回内容对象</span>
+    	fname = response.url.split(<span class="hljs-string">'/'</span>)[<span class="hljs-number">-1</span>] <span class="hljs-comment">#文件名</span>
+    	<span class="hljs-keyword">with</span> open(fname,<span class="hljs-string">'wb'</span>)<span class="hljs-keyword">as</span> f:
+    		f.write(response.body)
+    		self.log(<span class="hljs-string">'save file%s.'</span>%fname)
+<span class="hljs-comment">#parse()用于处理响应，解析内容形成字典，发现新的URL爬取请求</span></code></pre>
+
+<p>关于yield生成器的用法，此处不在详细展开，可以自行百度学习，以下仅作简略介绍：</p>
+<p>yield  &lt;====&gt;  生成器<br>包含yield语句的函数是一个生成器。<br>生成器每次产生一个值（yield语句），函数被冻结，被唤醒后再产生一个值。<br>生成器是一个不断产生值的函数。<br>实例：</p>
+<pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">gen</span><span class="hljs-params">(n)</span>:</span>
+	<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n):
+		<span class="hljs-keyword">yield</span> i**<span class="hljs-number">2</span>
+
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> gen(<span class="hljs-number">5</span>):
+	print(i,<span class="hljs-string">' '</span>,end=<span class="hljs-string">''</span>)
+
+<span class="hljs-number">0</span>  <span class="hljs-number">1</span>  <span class="hljs-number">4</span>  <span class="hljs-number">9</span>  <span class="hljs-number">16</span>  
+<span class="hljs-comment">#生成器每调用一次在yield位置产生一个值，直到函数执行结束</span></code></pre>
+<p>即使用生成器，可以避免一次性列出所有内容，即便数据量再大，对函数而言，依然是一次处理一个单位，分多次处理。<br><img src="https://img-blog.csdnimg.cn/20200822201533801.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p>相关学习链接：<br><a href="https://www.runoob.com/python3/python3-iterator-generator.html" target="_blank" rel="noopener">https://www.runoob.com/python3/python3-iterator-generator.html</a><br><a href="https://blog.csdn.net/mieleizhi0522/article/details/82142856/" target="_blank" rel="noopener">https://blog.csdn.net/mieleizhi0522/article/details/82142856/</a></p>
+<h2 id="使用步骤总结："><a href="#使用步骤总结：" class="headerlink" title="使用步骤总结："></a>使用步骤总结：</h2><p>步骤1：建立工程和目录结构：在创建工程的目录下，使用scrapy startproject 【工程名称】命令<br>步骤2：在工程中产生一个Scrapy爬虫：在工程目录下，使用scrapy genspider【爬虫名称】命令<br>步骤3：配置产生的spider爬虫：按照需求，修改上一步骤中产生的爬虫文件<br>步骤4：执行爬虫：在工程目录下，输入scrapy crawl 【爬虫名称】命令<br><img src="https://img-blog.csdnimg.cn/20200822201543465.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h1 id="Scrapy爬虫的数据类型"><a href="#Scrapy爬虫的数据类型" class="headerlink" title="Scrapy爬虫的数据类型"></a>Scrapy爬虫的数据类型</h1><p>Request类，Response类，Item类</p>
+<h2 id="Request类"><a href="#Request类" class="headerlink" title="Request类"></a>Request类</h2><p>class scrapy.http.Request()<br>代表向网络上提交请求的内容，<br>Request对象表示一个HTTP请求，<br>由Spider生成，由Downloader执行。<br>属性或方法     |       说明<br>–|–|<br>.url Request    |     对应的请求URL地址<br>.method       |       对应的请求方法，’GET’ ‘POST’等<br>.headers    |         字典类型风格的请求头<br>.body       |          请求内容主体，字符串类型<br>.meta     |            用户添加的扩展信息，在Scrapy内部模块间传递信息使用<br>.copy() |              复制该请求</p>
+<h2 id="Response类"><a href="#Response类" class="headerlink" title="Response类"></a>Response类</h2><p>class scrapy.http.Response()<br>Response对象表示一个HTTP响应，<br>由Downloader生成，由Spider处理Item类。<br>属性或方法        |      说明<br>–|–|<br>.url Response       |     对应的URL地址<br>.status               |      HTTP状态码，成功是200<br>.headers Response    |  对应的头部信息<br>.body Response    |      对应的内容信息，字符串类型<br>.flags                 |      一组标记<br>.request         |          产生Response类型对应的Request对象<br>.copy()        |            复制该响应</p>
+<h2 id="Item类"><a href="#Item类" class="headerlink" title="Item类"></a>Item类</h2><p>class scrapy.item.Item()<br>Item对象表示一个从HTML页面中提取的信息内容，<br>由Spider生成，由Item Pipeline处理，<br>Item类似字典类型（严格来说不是字典），可以按照字典类型操作。</p>
+<h1 id="Scrapy爬虫信息提取方法"><a href="#Scrapy爬虫信息提取方法" class="headerlink" title="Scrapy爬虫信息提取方法"></a>Scrapy爬虫信息提取方法</h1><p>Scrapy爬虫支持多种HTML信息提取方法，就是scrapy框架支持解析html页面的方法：<br>• Beautiful Soup<br>• lxml<br>• re<br>• XPath Selector<br>• CSS Selector<br><img src="https://img-blog.csdnimg.cn/2020082220165096.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h1 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h1><p>Scrapy爬虫的第一个例子及目录结构<br>yield关键字和生成器<br>Request<br>Response<br>Item<br>CSS Selector的基本使用</p>
 <h1 id="课程来源：北京理工大学MOOC"><a href="#课程来源：北京理工大学MOOC" class="headerlink" title="课程来源：北京理工大学MOOC"></a>课程来源：<a href="https://www.icourse163.org/learn/BIT-1001870001?tid=1450316449#/learn/announce" target="_blank" rel="noopener">北京理工大学MOOC</a></h1>
             </article>
             <hr>
@@ -318,18 +334,12 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/08/22/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%889%EF%BC%89%E2%80%94%E2%80%94Scrapy%E6%A1%86%E6%9E%B6%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">初学爬虫（9）——Scrapy框架基础使用</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/08/18/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%887%EF%BC%89%E2%80%94%E2%80%94%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88re%E5%BA%93%EF%BC%89%E5%85%A5%E9%97%A8/">
-                        <span class="hidden-mobile">初学爬虫（7）——正则表达式（re库）入门</span>
+                      <a href="/2020/08/20/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%888%EF%BC%89%E2%80%94%E2%80%94scrapy%E6%A1%86%E6%9E%B6%E7%90%86%E8%AE%BA/">
+                        <span class="hidden-mobile">初学爬虫（8）——scrapy框架理论</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -496,7 +506,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "初学爬虫（8）——scrapy框架理论&nbsp;",
+        "初学爬虫（9）——Scrapy框架基础使用&nbsp;",
       ],
       cursorChar: "",
       typeSpeed: 50,
