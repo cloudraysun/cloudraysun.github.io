@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/avatar.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="cloudray">
+  <meta name="keywords" content="">
+  <title>初学爬虫（11）——股票数据分析，爬虫学习暂告一段落 - cloudray</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Cloudray</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-filjiel"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/%E7%94%B5%E5%AD%90.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-08-29 00:40">
+      August 29, 2020 am
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      26
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：August 29, 2020 am
+                
+              </p>
+            
+            <article class="markdown-body">
+              <p>&emsp;终于写到了最后一篇，比之前说的时间晚了两天。这个系列大概持续了23天（今天不算），平均的话，除了这篇，基本还是符合我最开始立的Flag，虽然实际学习时间只有一半不到，但这样的学习效率还是太低了，我的总体课程进度还是跟着课程走的，实际应用只有这一篇而已。<br>&emsp;总体评价：尚可，这是第一次我持续性的写博客，虽然是发在个人博客上，但CSDN的博客我也会在修改后，一下全部发出。后续安排会在期末考试结束后在做，目前想法是复习C语言一个系列，python的下一个系列则另作安排。文笔较差，望见谅。<br><img src="https://img-blog.csdnimg.cn/20200829002809432.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<hr>
+<h1 id="股票数据分析定向爬虫"><a href="#股票数据分析定向爬虫" class="headerlink" title="股票数据分析定向爬虫"></a>股票数据分析定向爬虫</h1><p><strong>注：此代码仅供学习和参考</strong></p>
+<h2 id="需求："><a href="#需求：" class="headerlink" title="需求："></a>需求：</h2><p>1：通过一个网站获取A股股票代码<br>2：通过A股股票代码在另一个网站获取股票的部分具体信息</p>
+<h2 id="明确目标："><a href="#明确目标：" class="headerlink" title="明确目标："></a>明确目标：</h2><p>1：搜索股票代码一览表，在查询多个网站后，发现从连板网获取A股股票代码更为简单，可以查询按地区分的股票代码：<br><code>https://www.banban.cn/gupiao/</code>     +   地址<br>2：查询股票信息，共有两个选择，东方财富网或者雪球网，此处使用了雪球网。<br>通过查看网页源代码，决定在雪球网，获取具体信息为当前价格，和涨跌情况<br>url分为两类，SZ或SH+股票代码<br><a href="https://xueqiu.com/S/SZ" target="_blank" rel="noopener">https://xueqiu.com/S/SZ</a><br><a href="https://xueqiu.com/S/SH" target="_blank" rel="noopener">https://xueqiu.com/S/SH</a></p>
+<h2 id="技术路线："><a href="#技术路线：" class="headerlink" title="技术路线："></a>技术路线：</h2><p>1.requests+BeautifulSoup+re<br>2.Scrapy框架<br>此处暂时采取第一种技术路线</p>
+<h2 id="网页分析："><a href="#网页分析：" class="headerlink" title="网页分析："></a>网页分析：</h2><h3 id="1：关于获取股票代码网站的网页分析"><a href="#1：关于获取股票代码网站的网页分析" class="headerlink" title="1：关于获取股票代码网站的网页分析"></a>1：关于获取股票代码网站的网页分析</h3><p>连板网<br><code>https://www.banban.cn/gupiao/shanghai/</code>    上海上市公司名单一览表<br><code>https://www.banban.cn/gupiao/hebei/shijiazhuang.html</code> 河北石家庄市上市公司名单一览表<br>从以上url，可以看出地区的切换，通过<br><code>https://www.banban.cn/gupiao/</code>     +   地址（.html）<br>可以获得某地区A股列表<br>再以上海为例，查看源代码，其股票信息均存储在<li>标签中，可以通过遍历获得。<br><img src="https://img-blog.csdnimg.cn/20200828231650374.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>查看robots.txt协议，发现不存在，则代表此网站可以任意爬取：<br><img src="https://img-blog.csdnimg.cn/20200828231717629.jpg#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h3 id="2具体个股信息的获得"><a href="#2具体个股信息的获得" class="headerlink" title="2具体个股信息的获得"></a>2具体个股信息的获得</h3><p>雪球网<br>以下为个股信息的url<br><code>https://xueqiu.com/S/SH688356</code><br><code>https://xueqiu.com/S/SZ300187</code><br>url分为两类，SZ或SH+股票代码<br><code>https://xueqiu.com/S/SZ</code><br><code>https://xueqiu.com/S/SH</code><br>获得股票代码后，可以依次尝试两种链接，若链接返回404，则代表此股票是另一种。<br>查看robots.txt协议<br><img src="https://img-blog.csdnimg.cn/20200828231815662.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>任意点开一个股票信息，查看源代码（不是检查代码），发现其较为复杂，且不便分析，<br><img src="https://img-blog.csdnimg.cn/20200828233144609.png#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p>故我选择直接用程序爬取后规范化输出的数据，并结合网页源代码，作为分析，</p>
+<pre><code class="hljs python">html = get_html(inf_url, head=<span class="hljs-string">''</span>)
+soup = BeautifulSoup(html,<span class="hljs-string">'html.parser'</span>)
+print(soup.prettify())<span class="hljs-comment">#规范化输出，方便分析网页</span></code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20200828233209993.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="程序结构："><a href="#程序结构：" class="headerlink" title="程序结构："></a>程序结构：</h2><p>获取网页源代码  get_html(url,head)<br>获得股票代码  Stock_Code(html,Stock_List)<br>通过股票代码，跳转个股信息，爬取当前价格和涨跌  Stock_inf(Stock_List,Stock_List_Inf,place)<br>主函数：选择爬取范围</p>
+<h2 id="完整代码（附注释）"><a href="#完整代码（附注释）" class="headerlink" title="完整代码（附注释）"></a>完整代码（附注释）</h2><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests
+<span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup
+<span class="hljs-keyword">import</span> bs4
+<span class="hljs-keyword">import</span> re
+<span class="hljs-keyword">import</span> traceback <span class="hljs-comment">#输出报错信息</span>
+<span class="hljs-keyword">import</span> time
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_html</span><span class="hljs-params">(url,head)</span>:</span>
+
+    html = requests.get(url,headers=head) <span class="hljs-comment">#注意爬取head</span>
+    html.raise_for_status()  <span class="hljs-comment"># 网页访问状态错误，则产生异常</span>
+    html.encoding = html.apparent_encoding  <span class="hljs-comment">#此处可以人工优化</span>
+    <span class="hljs-keyword">return</span> html.text
+
+<span class="hljs-comment">#获得股票代码</span>
+<span class="hljs-comment">#以字典格式，返回股票代码列表</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">Stock_Code</span><span class="hljs-params">(html,Stock_List)</span>:</span>
+    soup = BeautifulSoup(html,<span class="hljs-string">'html.parser'</span>)
+    a = soup.find_all(<span class="hljs-string">'a'</span>)<span class="hljs-comment">#所有'a'标签</span>
+    <span class="hljs-comment"># print(a)</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> a:
+        <span class="hljs-keyword">try</span>:
+            <span class="hljs-comment"># print(i)</span>
+            href = i.string<span class="hljs-comment">#获取其非属性字符串</span>
+            <span class="hljs-comment"># print(href)</span>
+            s = re.findall(<span class="hljs-string">r'.+?\(\d&#123;6&#125;\)'</span>,href) <span class="hljs-comment">#直接获取类似于外高桥(600648)这种格式的字符串</span>
+            <span class="hljs-comment">#返回的是列表！！！</span>
+            <span class="hljs-keyword">if</span> len(s)!=<span class="hljs-number">0</span>:
+                <span class="hljs-comment"># print(s)</span>
+                Stock_List[s[<span class="hljs-number">0</span>].split(<span class="hljs-string">'('</span>)[<span class="hljs-number">0</span>]] = s[<span class="hljs-number">0</span>].split(<span class="hljs-string">'('</span>)[<span class="hljs-number">1</span>].replace(<span class="hljs-string">')'</span>,<span class="hljs-string">''</span>)
+                <span class="hljs-comment"># print(s[0].split('(')[0],":",s[0].split('(')[1].replace(')',''))</span>
+        <span class="hljs-keyword">except</span>:
+                <span class="hljs-keyword">continue</span>
+
+<span class="hljs-comment">#子函数里一次性查询所有股票</span>
+<span class="hljs-comment">#获得股票当前价格和成交量</span>
+<span class="hljs-comment">#返回具体信息</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">Stock_inf</span><span class="hljs-params">(Stock_List,Stock_List_Inf,place)</span>:</span>
+    lst = len(Stock_List) <span class="hljs-comment">#总共爬取多少支股票</span>
+    print(<span class="hljs-string">"总共爬取&#123;&#125;股票共&#123;&#125;支"</span>.format(place,lst))
+    count = <span class="hljs-number">0</span>
+    t = time.localtime()
+    t = time.strftime(<span class="hljs-string">"%Y_%m_%d_%H_%M"</span>, t)
+    fpath = t+<span class="hljs-string">'股票数据.txt'</span>
+    <span class="hljs-keyword">with</span> open(fpath, <span class="hljs-string">'a'</span>, encoding=<span class="hljs-string">'utf-8'</span>) <span class="hljs-keyword">as</span> f:
+        f.write(<span class="hljs-string">'&#123;&#125;股票数据\n'</span>.format(place))
+        f.write(<span class="hljs-string">'股票名称\t股票代码\t当前价格\t\t涨跌情况\n'</span>)
+    <span class="hljs-comment">#遍历股票代码</span>
+    <span class="hljs-keyword">for</span> stock,code <span class="hljs-keyword">in</span> Stock_List.items():
+        <span class="hljs-keyword">try</span>:
+            inf_url = <span class="hljs-string">"https://xueqiu.com/S/SZ"</span> + code
+            html = get_html(inf_url,head = <span class="hljs-string">''</span>)
+        <span class="hljs-keyword">except</span>:
+            inf_url = <span class="hljs-string">"https://xueqiu.com/S/SH"</span> + code
+            html = get_html(inf_url, head=<span class="hljs-string">''</span>)
+        soup = BeautifulSoup(html,<span class="hljs-string">'html.parser'</span>)
+        <span class="hljs-comment"># print(soup.prettify())#规范化输出，方便分析网页</span>
+        <span class="hljs-comment"># print("********************************************")</span>
+        <span class="hljs-comment"># 拥有class=stock-current的div标签在其子孙节点里</span>
+        <span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> soup.body.descendants:
+            <span class="hljs-comment"># 注意find方法的使用，由于class是关键字，无法直接使用，故使用class_</span>
+            <span class="hljs-comment">#s.find(class_="stock-current")</span>
+            value = s.find(attrs=&#123;<span class="hljs-string">'class'</span>: <span class="hljs-string">"stock-current"</span>&#125;)
+            up_down = s.find(attrs=&#123;<span class="hljs-string">'class'</span>: <span class="hljs-string">"stock-change"</span>&#125;)
+            <span class="hljs-keyword">if</span> up_down != <span class="hljs-literal">None</span>:
+                up_down = str(up_down.string)
+            <span class="hljs-keyword">if</span>  value != <span class="hljs-literal">None</span>:
+                value = str(value.strong.string)<span class="hljs-comment">#获取了当天价格</span>
+            <span class="hljs-keyword">if</span> (up_down!=<span class="hljs-literal">None</span>) <span class="hljs-keyword">and</span> (value!=<span class="hljs-literal">None</span>):
+                Stock_List_Inf[stock] = [code,value,up_down]
+                st = stock+<span class="hljs-string">'\t'</span>+code+<span class="hljs-string">'\t'</span>+value+<span class="hljs-string">'\t'</span>+up_down+<span class="hljs-string">'\n'</span> <span class="hljs-comment">#方便写入文件</span>
+                <span class="hljs-keyword">with</span> open(fpath, <span class="hljs-string">'a'</span>,encoding=<span class="hljs-string">'utf-8'</span>) <span class="hljs-keyword">as</span> f:
+                    f.write(st)
+                count = count+<span class="hljs-number">1</span>
+                bar = <span class="hljs-string">'['</span>+<span class="hljs-string">'*'</span>*int(count*<span class="hljs-number">100</span>/lst)+<span class="hljs-string">']'</span><span class="hljs-comment">#多行进度条暂时不会,似乎有点bug，有时会跳</span>
+                print(<span class="hljs-string">'\r当前进度&#123;:.2f&#125;%\t正在爬取：&#123;&#125;\t&#123;&#125;'</span>.format(count*<span class="hljs-number">100</span>/lst,stock,bar),end=<span class="hljs-string">''</span>)<span class="hljs-comment">#\r 表示将光标的位置回退到本行的开头位置</span>
+                <span class="hljs-keyword">break</span>
+    <span class="hljs-keyword">return</span> Stock_List_Inf
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span>
+    place = &#123;<span class="hljs-string">"合肥"</span>:<span class="hljs-string">"anhui/hefei.html"</span>,<span class="hljs-string">'上海'</span>:<span class="hljs-string">"shanghai/"</span>&#125;
+    <span class="hljs-comment"># place = &#123;"合肥": "anhui/hefei.html"&#125; #可以选择自己加上</span>
+    <span class="hljs-comment"># places = place["合肥"]</span>
+    <span class="hljs-keyword">for</span> pl <span class="hljs-keyword">in</span> list(place.keys()):
+        Stock_List = &#123;&#125;  <span class="hljs-comment"># 存放股票代码的字典</span>
+        Stock_List_Inf = &#123;&#125; <span class="hljs-comment">#最终存放股票信息的地方</span>
+        print(<span class="hljs-string">'正在爬取&#123;&#125;的股票'</span>.format(pl))
+        Code_Url = <span class="hljs-string">"https://www.banban.cn/gupiao/"</span>+ place[pl]<span class="hljs-comment">#此处仅以上海为例</span>
+        html = get_html(Code_Url,<span class="hljs-string">''</span>)<span class="hljs-comment">#此网站可以不用加header</span>
+        Stock_Code(html,Stock_List)<span class="hljs-comment">#获取股票代码和名称</span>
+        Stock_inf(Stock_List,Stock_List_Inf,pl)<span class="hljs-comment">#获得股票数据具体信息</span>
+        print(<span class="hljs-string">'\n&#123;&#125;股票爬取完成'</span>.format(pl))
+    print(<span class="hljs-string">'股票爬取完成'</span>)
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    main()
+<span class="hljs-comment">#traceback.print_exc() #打印异常信息</span></code></pre>
+<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><p>可以选择爬取范围，此处仅以上海和合肥的A股为例。<br>可以以百分比和进度条形式显示进度。<br><img src="https://img-blog.csdnimg.cn/20200828233716506.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/2020082823372428.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200829003507557.gif#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="优化思路"><a href="#优化思路" class="headerlink" title="优化思路"></a>优化思路</h2><p>1：优化异常处理结构，增加traceback模块。<br>2：添加多行进度条模式<br>3：设计UI</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/python/">python</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/08/24/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%8810%EF%BC%89%E2%80%94%E2%80%94%E5%AE%9E%E4%BE%8B2%E5%88%99/">
+                        <span class="hidden-mobile">初学爬虫（10）——实例2则</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+
+    
+  </div>
+</footer>
+<div id="music163player">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1206866&auto=1&height=66"></iframe>
+</div>
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "初学爬虫（11）——股票数据分析，爬虫学习暂告一段落&nbsp;",
+      ],
+      cursorChar: "",
+      typeSpeed: 50,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+  
+  
+    <script>
+      !function (e, t, a) {
+        function r() {
+          for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[e].y--, s[e].scale += .004, s[e].alpha -= .013, s[e].el.style.cssText = "left:" + s[e].x + "px;top:" + s[e].y + "px;opacity:" + s[e].alpha + ";transform:scale(" + s[e].scale + "," + s[e].scale + ") rotate(45deg);background:" + s[e].color + ";z-index:99999");
+          requestAnimationFrame(r)
+        }
+
+        function n() {
+          var t = "function" == typeof e.onclick && e.onclick;
+          e.onclick = function (e) {
+            t && t(), o(e)
+          }
+        }
+
+        function o(e) {
+          var a = t.createElement("div");
+          a.className = "heart", s.push({
+            el: a,
+            x: e.clientX - 5,
+            y: e.clientY - 5,
+            scale: 1,
+            alpha: 1,
+            color: c()
+          }), t.body.appendChild(a)
+        }
+
+        function i(e) {
+          var a = t.createElement("style");
+          a.type = "text/css";
+          try {
+            a.appendChild(t.createTextNode(e))
+          } catch (t) {
+            a.styleSheet.cssText = e
+          }
+          t.getElementsByTagName("head")[0].appendChild(a)
+        }
+
+        function c() {
+          return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+        }
+
+        var s = [];
+        e.requestAnimationFrame = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || function (e) {
+          setTimeout(e, 1e3 / 60)
+        }, i(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"), n(), r()
+      }(window, document);
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<script src="/node_modules/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"node_modules/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/node_modules/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
