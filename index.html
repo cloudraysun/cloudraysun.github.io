@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="en">
-
-
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -25,11 +25,11 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -38,6 +38,7 @@
 
 
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 4.2.0"></head>
 
 
@@ -136,7 +137,7 @@
           
             <li class="nav-item">
               <a class="nav-link" href="https://xydh.fun/cloudray" target="_blank" rel="noopener">
-                <i class="icon-mini-programme-fill"></i>
+                <i class="icon-birefcase-fill"></i>
                 导航
               </a>
             </li>
@@ -144,8 +145,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -158,7 +165,7 @@
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fade-in-up">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
@@ -191,21 +198,28 @@
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/29/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%8811%EF%BC%89%E2%80%94%E2%80%94%E8%82%A1%E7%A5%A8%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%EF%BC%8C%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E6%9A%82%E5%91%8A%E4%B8%80%E6%AE%B5%E8%90%BD/">初学爬虫（11）——股票数据分析，爬虫学习暂告一段落</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%8811%EF%BC%89%E2%80%94%E2%80%94%E8%82%A1%E7%A5%A8%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%EF%BC%8C%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E6%9A%82%E5%91%8A%E4%B8%80%E6%AE%B5%E8%90%BD.html">初学爬虫（11）——股票数据分析，爬虫学习暂告一段落</a>
+      </h1>
 
-      <a href="/2020/08/29/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%8811%EF%BC%89%E2%80%94%E2%80%94%E8%82%A1%E7%A5%A8%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%EF%BC%8C%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E6%9A%82%E5%91%8A%E4%B8%80%E6%AE%B5%E8%90%BD/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%8811%EF%BC%89%E2%80%94%E2%80%94%E8%82%A1%E7%A5%A8%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%EF%BC%8C%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E6%9A%82%E5%91%8A%E4%B8%80%E6%AE%B5%E8%90%BD.html">
           
-        
-        <div>&emsp;终于写到了最后一篇，比之前说的时间晚了两天。这个系列大概持续了23天（今天不算），平均的话，除了这篇，基本还是符合我最开始立的Flag，虽然实际学习时间只有一半不到，但这样的学习效率还是太低了，我的总体课程进度还是跟着课程走的，实际应用只有这一篇而已。&emsp;总体评价：尚可，这是第一次我持续性的写博客，虽然是发在个人博客上，但CSDN的博客我也会在修改后，一下全部发出。后续安排会在</div>
-      </a>
+          
+            
+          
+          &emsp;终于写到了最后一篇，比之前说的时间晚了两天。这个系列大概持续了23天（今天不算），平均的话，除了这篇，基本还是符合我最开始立的Flag，虽然实际学习时间只有一半不到，但这样的学习效率还是太低了，我的总体课程进度还是跟着课程走的，实际应用只有这一篇而已。&emsp;总体评价：尚可，这是第一次我持续性的写博客，虽然是发在个人博客上，但CSDN的博客我也会在修改后，一下全部发出。后续安排会在
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-29
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-29 00:40" pubdate>
+              2020-08-29
+            </time>
           </div>
         
         
@@ -227,27 +241,34 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/24/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%8810%EF%BC%89%E2%80%94%E2%80%94%E5%AE%9E%E4%BE%8B2%E5%88%99/">初学爬虫（10）——实例2则</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%8810%EF%BC%89%E2%80%94%E2%80%94%E5%AE%9E%E4%BE%8B2%E5%88%99.html">初学爬虫（10）——实例2则</a>
+      </h1>
 
-      <a href="/2020/08/24/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%8810%EF%BC%89%E2%80%94%E2%80%94%E5%AE%9E%E4%BE%8B2%E5%88%99/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%8810%EF%BC%89%E2%80%94%E2%80%94%E5%AE%9E%E4%BE%8B2%E5%88%99.html">
           
-        
-        <div>&emsp;算起来，这已经是第3次打脸了，虽然严格来讲，依然符合我第一篇立下的Flag，但在这个过程中，所做所为还是有些差劲，比如上一篇刚说上周就能完结，结果昨天刚开个头就放弃了。而且今天这篇本来应该是完结篇，但是发现实例3和实例4所用的网站已经无法访问，于是便只有2例了。实例3和实例4我将作为自己的练习题来写，不再依靠课程。至于时间方面，3天吧，这次希望不要再拖到最后了。剩下还有很多想记录的，下</div>
-      </a>
+          
+            
+          
+          &emsp;算起来，这已经是第3次打脸了，虽然严格来讲，依然符合我第一篇立下的Flag，但在这个过程中，所做所为还是有些差劲，比如上一篇刚说上周就能完结，结果昨天刚开个头就放弃了。而且今天这篇本来应该是完结篇，但是发现实例3和实例4所用的网站已经无法访问，于是便只有2例了。实例3和实例4我将作为自己的练习题来写，不再依靠课程。至于时间方面，3天吧，这次希望不要再拖到最后了。剩下还有很多想记录的，下
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-24
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-24 23:10" pubdate>
+              2020-08-24
+            </time>
           </div>
         
         
@@ -269,33 +290,40 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/22/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%889%EF%BC%89%E2%80%94%E2%80%94Scrapy%E6%A1%86%E6%9E%B6%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/">初学爬虫（9）——Scrapy框架基础使用</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%889%EF%BC%89%E2%80%94%E2%80%94Scrapy%E6%A1%86%E6%9E%B6%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8.html">初学爬虫（9）——Scrapy框架基础使用</a>
+      </h1>
 
-      <a href="/2020/08/22/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%889%EF%BC%89%E2%80%94%E2%80%94Scrapy%E6%A1%86%E6%9E%B6%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%889%EF%BC%89%E2%80%94%E2%80%94Scrapy%E6%A1%86%E6%9E%B6%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8.html">
           
-        
-        <div>
+          
+            
+          
+          
 
 演示HTML页面地址：http://python123.io/ws/demo.html文件名称：demo.html
 应用Scrapy爬虫框架主要是编写配置型代码
 使用步骤步骤1：建立工程和目录结构建立一个工程文件（此处我的工程文件为demo123），打开windowns的cmd，输入scrapy startproject命令
 此时会在工程目录下生成一个文件夹和一个cfg文件，以下是其目录结构
-</div>
-      </a>
+
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-22
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-22 20:20" pubdate>
+              2020-08-22
+            </time>
           </div>
         
         
@@ -317,29 +345,36 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/20/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%888%EF%BC%89%E2%80%94%E2%80%94scrapy%E6%A1%86%E6%9E%B6%E7%90%86%E8%AE%BA/">初学爬虫（8）——scrapy框架理论</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%888%EF%BC%89%E2%80%94%E2%80%94scrapy%E6%A1%86%E6%9E%B6%E7%90%86%E8%AE%BA.html">初学爬虫（8）——scrapy框架理论</a>
+      </h1>
 
-      <a href="/2020/08/20/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%888%EF%BC%89%E2%80%94%E2%80%94scrapy%E6%A1%86%E6%9E%B6%E7%90%86%E8%AE%BA/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%888%EF%BC%89%E2%80%94%E2%80%94scrapy%E6%A1%86%E6%9E%B6%E7%90%86%E8%AE%BA.html">
           
-        
-        <div>
+          
+            
+          
+          
 
-介绍&emsp;Scrapy是一个适用爬取网站数据、提取结构性数据的应用程序框架，它可以应用在广泛领域：Scrapy 常应用在包括数据挖掘，信息处理或存储历史数据等一系列的程序中。通常我们可以很简单的通过 Scrapy 框架实现一个爬虫，抓取指定网站的内容或图片。&emsp;尽管Scrapy原本是设计用来屏幕抓取（更精确的说，是网络抓取），但它也可以用来访问API来提取数据。——百度百科Scr</div>
-      </a>
+介绍&emsp;Scrapy是一个适用爬取网站数据、提取结构性数据的应用程序框架，它可以应用在广泛领域：Scrapy 常应用在包括数据挖掘，信息处理或存储历史数据等一系列的程序中。通常我们可以很简单的通过 Scrapy 框架实现一个爬虫，抓取指定网站的内容或图片。&emsp;尽管Scrapy原本是设计用来屏幕抓取（更精确的说，是网络抓取），但它也可以用来访问API来提取数据。——百度百科Scr
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-20
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-20 18:10" pubdate>
+              2020-08-20
+            </time>
           </div>
         
         
@@ -361,29 +396,36 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/18/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%887%EF%BC%89%E2%80%94%E2%80%94%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88re%E5%BA%93%EF%BC%89%E5%85%A5%E9%97%A8/">初学爬虫（7）——正则表达式（re库）入门</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%887%EF%BC%89%E2%80%94%E2%80%94%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88re%E5%BA%93%EF%BC%89%E5%85%A5%E9%97%A8.html">初学爬虫（7）——正则表达式（re库）入门</a>
+      </h1>
 
-      <a href="/2020/08/18/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%887%EF%BC%89%E2%80%94%E2%80%94%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88re%E5%BA%93%EF%BC%89%E5%85%A5%E9%97%A8/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%887%EF%BC%89%E2%80%94%E2%80%94%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88re%E5%BA%93%EF%BC%89%E5%85%A5%E9%97%A8.html">
           
-        
-        <div>&emsp;又是新的一篇，中间本来还有一个实例，不过打算放到最后一篇了，按照这个进度的话，这周应该就能学完这个系列，进度实际上有点慢了。开学后还有很多事，还有几个比赛，也要准备开始复习C语言了。至于开学的期末考试。。。
+          
+            
+          
+          &emsp;又是新的一篇，中间本来还有一个实例，不过打算放到最后一篇了，按照这个进度的话，这周应该就能学完这个系列，进度实际上有点慢了。开学后还有很多事，还有几个比赛，也要准备开始复习C语言了。至于开学的期末考试。。。
 
-正则表达式基础概念：regular expression, regex, RE正则表达式是用来简洁表达一组字符串的表达式，是一种通用的字符串表达框架。进一步正则表达式是一种针对字</div>
-      </a>
+正则表达式基础概念：regular expression, regex, RE正则表达式是用来简洁表达一组字符串的表达式，是一种通用的字符串表达框架。进一步正则表达式是一种针对字
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-18
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-18 23:05" pubdate>
+              2020-08-18
+            </time>
           </div>
         
         
@@ -405,30 +447,37 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/17/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%886%EF%BC%89%E2%80%94%E2%80%94%E4%BF%A1%E6%81%AF%E6%8F%90%E5%8F%96%E5%92%8C%E6%A0%87%E8%AE%B0%EF%BC%8C%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%B8%BD%E4%BA%86/">初学爬虫（6）——信息提取和标记，第一次鸽了</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%886%EF%BC%89%E2%80%94%E2%80%94%E4%BF%A1%E6%81%AF%E6%8F%90%E5%8F%96%E5%92%8C%E6%A0%87%E8%AE%B0%EF%BC%8C%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%B8%BD%E4%BA%86.html">初学爬虫（6）——信息提取和标记，第一次鸽了</a>
+      </h1>
 
-      <a href="/2020/08/17/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%886%EF%BC%89%E2%80%94%E2%80%94%E4%BF%A1%E6%81%AF%E6%8F%90%E5%8F%96%E5%92%8C%E6%A0%87%E8%AE%B0%EF%BC%8C%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%B8%BD%E4%BA%86/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%886%EF%BC%89%E2%80%94%E2%80%94%E4%BF%A1%E6%81%AF%E6%8F%90%E5%8F%96%E5%92%8C%E6%A0%87%E8%AE%B0%EF%BC%8C%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%B8%BD%E4%BA%86.html">
           
-        
-        <div>&emsp;今天，不，应该说是昨天，第一次彻底鸽了。我现在的状态是一天写，一天休息，虽然每天会花大量时间在驾校上，但不代表没有时间去做这些。本来12点前是能够写完的，但临时有事，回来后发现也赶不完了，最后还是这样写完了。这算是Flag破功的第一次吧，希望不会有下一次了。
+          
+            
+          
+          &emsp;今天，不，应该说是昨天，第一次彻底鸽了。我现在的状态是一天写，一天休息，虽然每天会花大量时间在驾校上，但不代表没有时间去做这些。本来12点前是能够写完的，但临时有事，回来后发现也赶不完了，最后还是这样写完了。这算是Flag破功的第一次吧，希望不会有下一次了。
 
 信息标记信息的标记使信息能够更有效地表达，有助于理解信息的真实含义。也可以理解为标明信息是哪一方面的，如地点，名字，时间等。
-</div>
-      </a>
+
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-17
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-17 00:37" pubdate>
+              2020-08-17
+            </time>
           </div>
         
         
@@ -450,32 +499,39 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/14/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%885%EF%BC%89%E2%80%94%E2%80%94Beautiful%20Soup%E5%BA%93%E5%9F%BA%E7%A1%80/">初学爬虫（5）——Beautiful Soup库基础</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%885%EF%BC%89%E2%80%94%E2%80%94Beautiful%20Soup%E5%BA%93%E5%9F%BA%E7%A1%80.html">初学爬虫（5）——Beautiful Soup库基础</a>
+      </h1>
 
-      <a href="/2020/08/14/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%885%EF%BC%89%E2%80%94%E2%80%94Beautiful%20Soup%E5%BA%93%E5%9F%BA%E7%A1%80/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%885%EF%BC%89%E2%80%94%E2%80%94Beautiful%20Soup%E5%BA%93%E5%9F%BA%E7%A1%80.html">
           
-        
-        <div>&emsp;今天正式公布开学时间了，放了大半年的假期，终于快结束了。然而回去就要期末考试，看着还未动过的课本，还没开始复习（预习）啊！！！
+          
+            
+          
+          &emsp;今天正式公布开学时间了，放了大半年的假期，终于快结束了。然而回去就要期末考试，看着还未动过的课本，还没开始复习（预习）啊！！！
 
 &emsp;Beautiful Soup库用于解析HTML页面，可用于标记和提取信息。&emsp;在其官网https://www.crummy.com/software/BeautifulSoup/上的介绍如下：
 
 翻译为：
-Beautiful Soup库的</div>
-      </a>
+Beautiful Soup库的
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-14
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-14 22:43" pubdate>
+              2020-08-14
+            </time>
           </div>
         
         
@@ -497,33 +553,40 @@ Beautiful Soup库的</div>
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/12/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%884%EF%BC%89%E2%80%94%E2%80%94Requests%E5%BA%93%E5%AE%9E%E4%BE%8B%E6%93%8D%E4%BD%9C%EF%BC%8C%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%89%93%E8%84%B8/">初学爬虫（4）——Requests库实例操作，第一次打脸</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%884%EF%BC%89%E2%80%94%E2%80%94Requests%E5%BA%93%E5%AE%9E%E4%BE%8B%E6%93%8D%E4%BD%9C%EF%BC%8C%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%89%93%E8%84%B8.html">初学爬虫（4）——Requests库实例操作，第一次打脸</a>
+      </h1>
 
-      <a href="/2020/08/12/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%884%EF%BC%89%E2%80%94%E2%80%94Requests%E5%BA%93%E5%AE%9E%E4%BE%8B%E6%93%8D%E4%BD%9C%EF%BC%8C%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%89%93%E8%84%B8/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%884%EF%BC%89%E2%80%94%E2%80%94Requests%E5%BA%93%E5%AE%9E%E4%BE%8B%E6%93%8D%E4%BD%9C%EF%BC%8C%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%89%93%E8%84%B8.html">
           
-        
-        <div>&emsp;这篇内容很少，本来应该昨天就应该写完，最后在12点前补完。
+          
+            
+          
+          &emsp;这篇内容很少，本来应该昨天就应该写完，最后在12点前补完。
 
 &emsp;以下爬虫实例，均直接通过网页连接查询。此处关键在于明白通过API的灵活使用来获取资源。因还未学习BeautifulSoup库，故此处实例爬取页面均为原始页面。
 京东商品页面爬取&emsp;以下为全部代码
 import requests
 header = &#123;
-"User-Agent": "Mozilla/</div>
-      </a>
+"User-Agent": "Mozilla/
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-12
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-12 23:52" pubdate>
+              2020-08-12
+            </time>
           </div>
         
         
@@ -545,21 +608,24 @@ header = &#123;
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/10/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%883%EF%BC%89%E2%80%94%E2%80%94%E7%88%AC%E8%99%AB%E9%A3%8E%E9%99%A9%E5%92%8C%E9%99%90%E5%88%B6%EF%BC%8C%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8B%96%E5%88%B0%E6%9C%80%E5%90%8E/">初学爬虫（3）——爬虫风险和限制</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%883%EF%BC%89%E2%80%94%E2%80%94%E7%88%AC%E8%99%AB%E9%A3%8E%E9%99%A9%E5%92%8C%E9%99%90%E5%88%B6%EF%BC%8C%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8B%96%E5%88%B0%E6%9C%80%E5%90%8E.html">初学爬虫（3）——爬虫风险和限制</a>
+      </h1>
 
-      <a href="/2020/08/10/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%883%EF%BC%89%E2%80%94%E2%80%94%E7%88%AC%E8%99%AB%E9%A3%8E%E9%99%A9%E5%92%8C%E9%99%90%E5%88%B6%EF%BC%8C%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8B%96%E5%88%B0%E6%9C%80%E5%90%8E/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%883%EF%BC%89%E2%80%94%E2%80%94%E7%88%AC%E8%99%AB%E9%A3%8E%E9%99%A9%E5%92%8C%E9%99%90%E5%88%B6%EF%BC%8C%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8B%96%E5%88%B0%E6%9C%80%E5%90%8E.html">
           
-        
-        <div>&emsp;这篇文章又是写在最后的时间，差不多也是一个单元的内容，这样速度有点慢了，下一篇为实战例子环节，争取明天写掉吧。
+          
+            
+          
+          &emsp;这篇文章又是写在最后的时间，差不多也是一个单元的内容，这样速度有点慢了，下一篇为实战例子环节，争取明天写掉吧。
 
 爬虫种类
 
@@ -589,13 +655,17 @@ Requests库，大于90%
 Scrapy库
 定制开发，例如百度，谷歌
 
-</div>
-      </a>
+
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-10
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-10 22:43" pubdate>
+              2020-08-10
+            </time>
           </div>
         
         
@@ -617,27 +687,34 @@ Scrapy库
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/08/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%882%EF%BC%89%E2%80%94%E2%80%94Requests%E5%BA%93%E5%9F%BA%E7%A1%80%EF%BC%8C%E9%99%A9%E4%BA%9B%E6%89%93%E8%84%B8/">初学爬虫（2）——Requests库基础，险些打脸</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%882%EF%BC%89%E2%80%94%E2%80%94Requests%E5%BA%93%E5%9F%BA%E7%A1%80%EF%BC%8C%E9%99%A9%E4%BA%9B%E6%89%93%E8%84%B8.html">初学爬虫（2）——Requests库基础，险些打脸</a>
+      </h1>
 
-      <a href="/2020/08/08/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%882%EF%BC%89%E2%80%94%E2%80%94Requests%E5%BA%93%E5%9F%BA%E7%A1%80%EF%BC%8C%E9%99%A9%E4%BA%9B%E6%89%93%E8%84%B8/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%882%EF%BC%89%E2%80%94%E2%80%94Requests%E5%BA%93%E5%9F%BA%E7%A1%80%EF%BC%8C%E9%99%A9%E4%BA%9B%E6%89%93%E8%84%B8.html">
           
-        
-        <div>&emsp;写在前面，这是爬虫的第二篇学习记录，虽然是把已经之前已经学过的内容搬过来整理了一下 ，但还是险些被打脸，两天一篇的目标，还是自己太懒了，这次凑合过了两天，后天就要下一篇了，自己立的Flag，熬夜都得搞完——8月8日晚上0：45———————————————————————————————————————————&emsp;Requests库是目前python公认的爬取网页的最好的第三方</div>
-      </a>
+          
+            
+          
+          &emsp;写在前面，这是爬虫的第二篇学习记录，虽然是把已经之前已经学过的内容搬过来整理了一下 ，但还是险些被打脸，两天一篇的目标，还是自己太懒了，这次凑合过了两天，后天就要下一篇了，自己立的Flag，熬夜都得搞完——8月8日晚上0：45———————————————————————————————————————————&emsp;Requests库是目前python公认的爬取网页的最好的第三方
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-08
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-08 00:45" pubdate>
+              2020-08-08
+            </time>
           </div>
         
         
@@ -659,7 +736,7 @@ Scrapy库
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
 
@@ -717,6 +794,29 @@ Scrapy库
   
 
   
+    <!-- APlayer 音乐播放器 -->
+    <div id="aplayer"></div>
+    <script defer src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js" ></script>
+<link  rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+<script type="text/javascript">
+  var oldLoadAp = window.onload;
+  window.onload = function () {
+    oldLoadAp && oldLoadAp();
+
+    new APlayer({
+      container: document.getElementById('aplayer'),
+      fixed: true,
+      autoplay: 'false' === 'true',
+      loop: 'all',
+      order: 'random',
+      theme: '#b7daff',
+      preload: 'none',
+      audio: [{"name":"卡农","artist":"artist","url":"/songs/卡农.mp3","/img/cover.jpg":null},{"name":"寂静之声","artist":"Bandari","url":"/songs/Bandari寂静之声.mp3","/img/cover.jpg":null},{"name":"river flows in you","artist":"Bandari","url":"/songs/river_flows_in_you.mp3","/img/cover.jpg":null},{"name":"沉醉于风中","artist":"S.E.N.S.","url":"/songs/S.E.N.S.沉醉于风中.mp3","/img/cover.jpg":null},{"name":"雅俗共赏","artist":"许嵩","url":"/songs/许嵩 - 雅俗共赏.mp3","/img/cover.jpg":null},{"name":"素颜","artist":"许嵩,许嵩 何曼婷","url":"/songs/许嵩 何曼婷 - 素颜.mp3","/img/cover.jpg":null}]
+    });
+  }
+</script>
+
+  
 
   
 
@@ -759,9 +859,7 @@ Scrapy库
     
   </div>
 </footer>
-<div id="music163player">
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1206866&auto=1&height=66"></iframe>
-</div>
+
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
@@ -773,6 +871,10 @@ Scrapy库
 
   
     <script  src="/js/lazyload.js" ></script>
+  
+
+
+
   
 
 

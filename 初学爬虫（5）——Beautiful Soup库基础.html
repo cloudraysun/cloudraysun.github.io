@@ -1,0 +1,980 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/avatar.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="cloudray">
+  <meta name="keywords" content="">
+  <title>初学爬虫（5）——Beautiful Soup库基础 - cloudray</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Cloudray</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://xydh.fun/cloudray" target="_blank" rel="noopener">
+                <i class="icon-birefcase-fill"></i>
+                导航
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/%E7%94%B5%E5%AD%90.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      cloudray
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-08-14 22:43" pubdate>
+        August 14, 2020 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      56
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">初学爬虫（5）——Beautiful Soup库基础</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：August 14, 2020 pm
+                
+              </p>
+            
+            <div class="markdown-body" id="post-body">
+              <p>&emsp;今天正式公布开学时间了，放了大半年的假期，终于快结束了。然而回去就要期末考试，看着还未动过的课本，还没开始复习（预习）啊！！！<br><img src="https://img-blog.csdnimg.cn/20200814224145545.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<hr>
+<p>&emsp;Beautiful Soup库用于<strong>解析HTML页面，可用于标记和提取信息</strong>。<br>&emsp;在其官网<a href="https://www.crummy.com/software/BeautifulSoup/上的介绍如下：" target="_blank" rel="noopener">https://www.crummy.com/software/BeautifulSoup/上的介绍如下：</a></p>
+<p><img src="https://img-blog.csdnimg.cn/20200814220149144.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p>翻译为：<br><img src="https://img-blog.csdnimg.cn/20200814220157399.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h1 id="Beautiful-Soup库的引用"><a href="#Beautiful-Soup库的引用" class="headerlink" title="Beautiful Soup库的引用"></a>Beautiful Soup库的引用</h1><p>Beautiful Soup库，也叫Beautiful Soup4或bs4<br>一般引用方式为</p>
+<pre><code class="hljs python"><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup <span class="hljs-comment">#从bs4中，引入BeautifulSoup这个类</span></code></pre>
+
+<p>也可以直接引用</p>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> bs4</code></pre>
+
+
+
+
+<h1 id="Beautiful-Soup库基础理解"><a href="#Beautiful-Soup库基础理解" class="headerlink" title="Beautiful Soup库基础理解"></a>Beautiful Soup库基础理解</h1><p>以HTML库页面为例。<br>Beautiful Soup库是解析、遍历、维护”标签树“的功能库，可以解析以标签树为基本格式的文档。<br><img src="https://img-blog.csdnimg.cn/20200814220353681.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p>可以认为HTML文档&lt;=&gt;标签树&lt;=&gt;BeautifulSoup类，互相等价，BeautifulSoup对应一个HTML/XML文档的全部内容。<br>在此基础上，可以使标签树成为一个变量，对其BeautifulSoup类的改变，可等价于改变标签树<br><img src="https://img-blog.csdnimg.cn/20200814220406538.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h1 id="Beautiful-Soup库解析器"><a href="#Beautiful-Soup库解析器" class="headerlink" title="Beautiful Soup库解析器"></a>Beautiful Soup库解析器</h1><p>都可以有效解析HTML/XMl文档，使用不同解析器会产生些微差距，需根据实际情况选择。<br>可供参考<br><a href="https://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/#id53" target="_blank" rel="noopener">https://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/#id53</a></p>
+<pre><code class="hljs python">soup = BeautifulSoup(<span class="hljs-string">'&lt;html&gt;data&lt;/html&gt;'</span>，<span class="hljs-string">'解析器种类'</span>)</code></pre>
+
+
+
+<table>
+<thead>
+<tr>
+<th>解析器</th>
+<th>使用方法</th>
+<th>优势</th>
+<th>劣势</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Python标准库</td>
+<td>BeautifulSoup(markup, “html.parser”)</td>
+<td>Python的内置标准库，执行速度适中</td>
+<td>Python 2.7.3 or (3.2.2)前 的版本中文档容错能力差</td>
+</tr>
+<tr>
+<td>lxml HTML 解析器</td>
+<td>BeautifulSoup(markup, “lxml”)</td>
+<td>速度快 ，文档容错能力强</td>
+<td>需要安装C语言库</td>
+</tr>
+<tr>
+<td>lxml XML解析器</td>
+<td>BeautifulSoup(markup, [“lxml”, “xml”])、BeautifulSoup(markup, “xml”)</td>
+<td>速度快 ，唯一支持XML的解析器</td>
+<td>需要安装C语言库</td>
+</tr>
+<tr>
+<td>html5lib</td>
+<td>BeautifulSoup(markup, “html5lib”)</td>
+<td>最好的容错性，以浏览器的方式解析文档，生成HTML5格式的文档</td>
+<td>速度慢，不依赖外部扩展</td>
+</tr>
+<tr>
+<td>作者：马小跳_</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>链接：<a href="https://www.jianshu.com/p/5e23d2c90500" target="_blank" rel="noopener">https://www.jianshu.com/p/5e23d2c90500</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>来源：简书</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="BeautifulSoup类的基本元素"><a href="#BeautifulSoup类的基本元素" class="headerlink" title="BeautifulSoup类的基本元素"></a>BeautifulSoup类的基本元素</h1><p><code>&lt;p&gt;...&lt;/p&gt;</code>为标签<br>p为名称，<br>class=”title”为属性，用于定义标签特点，<br>class属性内容为”title”，属性可以说由键值对构成，class为键，title为值。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200814220706447.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="基本元素说明"><a href="#基本元素说明" class="headerlink" title="基本元素说明"></a>基本元素说明</h2><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">“title”</span>&gt;</span> … <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>'</code></pre>
+
+<p>Tag 标签，最基本的信息组织单元，分别用&lt;&gt;和&lt;/&gt;标明开头和结尾<br>Name 标签的名字，<code>&quot;&lt;p&gt;…&lt;/p&gt;&quot;</code>的名字是’p’，格式：<tag>.name<br>Attributes 标签的属性，字典形式组织，格式：<tag>.attrs<br>NavigableString 标签内非属性字符串，&lt;&gt;…&lt;/&gt;中字符串，格式：<tag>.string<br>Comment 标签内字符串的注释部分，一种特殊的Comment类型</p>
+<h2 id="demo页面示例："><a href="#demo页面示例：" class="headerlink" title="demo页面示例："></a>demo页面示例：</h2><p>以下示例均基于<a href="http://python123.io/ws/demo.html网站" target="_blank" rel="noopener">http://python123.io/ws/demo.html网站</a></p>
+<pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> requests
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup
+<span class="hljs-meta">&gt;&gt;&gt; </span>r = requests.get(<span class="hljs-string">"http://python123.io/ws/demo.html"</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>demo = r.text
+<span class="hljs-meta">&gt;&gt;&gt; </span>demo
+<span class="hljs-string">'&lt;html&gt;&lt;head&gt;&lt;title&gt;This is a python demo page&lt;/title&gt;&lt;/head&gt;\r\n&lt;body&gt;\r\n&lt;p class="title"&gt;&lt;b&gt;The demo python introduces several python courses.&lt;/b&gt;&lt;/p&gt;\r\n&lt;p class="course"&gt;Python is a wonderful general-purpose programming language. You can learn Python from novice to professional by tracking the following courses:\r\n&lt;a href="http://www.icourse163.org/course/BIT-268001" class="py1" id="link1"&gt;Basic Python&lt;/a&gt; and &lt;a href="http://www.icourse163.org/course/BIT-1001870001" class="py2" id="link2"&gt;Advanced Python&lt;/a&gt;.&lt;/p&gt;\r\n&lt;/body&gt;&lt;/html&gt;'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup = BeautifulSoup(demo,<span class="hljs-string">"html.parser"</span>) <span class="hljs-comment">#将demo做成汤</span></code></pre>
+<p>Tag 标签</p>
+<pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>soup.title <span class="hljs-comment">#soup标签</span>
+&lt;title&gt;This is a python demo page&lt;/title&gt;
+<span class="hljs-meta">&gt;&gt;&gt; </span>tag = soup.a <span class="hljs-comment">#获得第一个a标签内容，任何标签都可以通过soup.tag方式获得，存在多个时，返回第一个</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>tag
+&lt;a class="py1" href="http://www.icourse163.org/course/BIT-268001" id="link1"&gt;Basic Python&lt;/a&gt;</code></pre>
+<p>Name 标签名字</p>
+<pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>soup.a.name <span class="hljs-comment">#soup标签名字</span>
+<span class="hljs-string">'a'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup.a.parent.name <span class="hljs-comment">#获得其父类名字</span>
+<span class="hljs-string">'p'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup.a.parent.parent.name
+<span class="hljs-string">'body'</span></code></pre>
+<p>Attributes 标签的属性</p>
+<pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tag = soup.a
+<span class="hljs-meta">&gt;&gt;&gt; </span>tag.attrs <span class="hljs-comment">#获取标签属性，若没有则返回空字典</span>
+&#123;<span class="hljs-string">'href'</span>: <span class="hljs-string">'http://www.icourse163.org/course/BIT-268001'</span>, <span class="hljs-string">'class'</span>: [<span class="hljs-string">'py1'</span>], <span class="hljs-string">'id'</span>: <span class="hljs-string">'link1'</span>&#125;
+<span class="hljs-meta">&gt;&gt;&gt; </span>tag.attrs[<span class="hljs-string">'class'</span>] <span class="hljs-comment">#获取属性内容列表</span>
+[<span class="hljs-string">'py1'</span>]
+<span class="hljs-meta">&gt;&gt;&gt; </span>tag.attrs[<span class="hljs-string">'href'</span>]
+<span class="hljs-string">'http://www.icourse163.org/course/BIT-268001'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>type(tag.attrs[<span class="hljs-string">'class'</span>]) <span class="hljs-comment">#标签属性类型</span>
+&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> '<span class="hljs-title">list</span>'&gt;</span>
+<span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">type</span><span class="hljs-params">(tag.attrs)</span></span>
+<span class="hljs-class">&lt;<span class="hljs-title">class</span> '<span class="hljs-title">dict</span>'&gt;</span>
+<span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">type</span><span class="hljs-params">(tag)</span>#标签类型，特殊定义</span>
+<span class="hljs-class">&lt;<span class="hljs-title">class</span> '<span class="hljs-title">bs4</span>.<span class="hljs-title">element</span>.<span class="hljs-title">Tag</span>'&gt;</span></code></pre>
+<p>NavigableString 标签内非属性字符串</p>
+<pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>tag = soup.a 
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup.a.string <span class="hljs-comment">#标签内非属性字符串</span>
+<span class="hljs-string">'Basic Python'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup.p
+&lt;p class="title"&gt;&lt;b&gt;The demo python introduces several python courses.&lt;/b&gt;&lt;/p&gt;
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup.p.string <span class="hljs-comment">#标签内非属性字符串，可跨越多层次</span>
+<span class="hljs-string">'The demo python introduces several python courses.'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>type(soup.p.string)
+&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> '<span class="hljs-title">bs4</span>.<span class="hljs-title">element</span>.<span class="hljs-title">NavigableString</span>'&gt;</span></code></pre>
+<p>Comment 标签内字符串的注释部分</p>
+<pre><code class="hljs python"><span class="hljs-comment">#当获取非属性字符串时，注释和非注释需要通过其类型分辨</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>newsoup =  BeautifulSoup(<span class="hljs-string">"&lt;b&gt;&lt;!--Comment--&gt;&lt;/b&gt;&lt;p&gt;not comment&lt;/p&gt;"</span>,<span class="hljs-string">"html.parser"</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>newsoup.b.string
+<span class="hljs-string">'Comment'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>type(newsoup.b.string)
+&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> '<span class="hljs-title">bs4</span>.<span class="hljs-title">element</span>.<span class="hljs-title">Comment</span>'&gt;  #注释类型</span>
+<span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">newsoup</span>.<span class="hljs-title">p</span>.<span class="hljs-title">string</span></span>
+<span class="hljs-class">'<span class="hljs-title">not</span> <span class="hljs-title">comment</span>'</span>
+<span class="hljs-class">&gt;&gt;&gt; <span class="hljs-title">type</span><span class="hljs-params">(newsoup.p.string)</span></span>
+<span class="hljs-class">&lt;<span class="hljs-title">class</span> '<span class="hljs-title">bs4</span>.<span class="hljs-title">element</span>.<span class="hljs-title">NavigableString</span>'&gt; #非属性字符串类型</span></code></pre>
+
+<p><img src="https://img-blog.csdnimg.cn/20200814221506568.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h1 id="基于bs4库的HTML内容遍历方法"><a href="#基于bs4库的HTML内容遍历方法" class="headerlink" title="基于bs4库的HTML内容遍历方法"></a>基于bs4库的HTML内容遍历方法</h1><h2 id="HTML基本格式"><a href="#HTML基本格式" class="headerlink" title="HTML基本格式"></a>HTML基本格式</h2><p><img src="https://img-blog.csdnimg.cn/20200814221518166.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>例子<br>树形结构的文本信息<br><img src="https://img-blog.csdnimg.cn/2020081422155274.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="HTML遍历方式"><a href="#HTML遍历方式" class="headerlink" title="HTML遍历方式"></a>HTML遍历方式</h2><p><img src="https://img-blog.csdnimg.cn/20200814221602129.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p>BeautifulSoup类型是标签树的根节点</p>
+<h3 id="下行遍历"><a href="#下行遍历" class="headerlink" title="下行遍历"></a>下行遍历</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.contents</td>
+<td>将<tag>所有儿子节点存入列表，返回列表类型</td>
+</tr>
+<tr>
+<td>.children</td>
+<td>与.contents类似，用于循环遍历儿子节点</td>
+</tr>
+<tr>
+<td>.descendants</td>
+<td>包含所有子孙节点，用于循环遍历</td>
+</tr>
+<tr>
+<td>注：.contents返回为列表类型，剩下两个返回为迭代类型</td>
+<td></td>
+</tr>
+</tbody></table>
+<pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> requests
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup
+<span class="hljs-meta">&gt;&gt;&gt; </span>r = requests.get(<span class="hljs-string">"http://python123.io/ws/demo.html"</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>demo = r.text
+<span class="hljs-meta">&gt;&gt;&gt; </span>demo
+<span class="hljs-string">'&lt;html&gt;&lt;head&gt;&lt;title&gt;This is a python demo page&lt;/title&gt;&lt;/head&gt;\r\n&lt;body&gt;\r\n&lt;p class="title"&gt;&lt;b&gt;The demo python introduces several python courses.&lt;/b&gt;&lt;/p&gt;\r\n&lt;p class="course"&gt;Python is a wonderful general-purpose programming language. You can learn Python from novice to professional by tracking the following courses:\r\n&lt;a href="http://www.icourse163.org/course/BIT-268001" class="py1" id="link1"&gt;Basic Python&lt;/a&gt; and &lt;a href="http://www.icourse163.org/course/BIT-1001870001" class="py2" id="link2"&gt;Advanced Python&lt;/a&gt;.&lt;/p&gt;\r\n&lt;/body&gt;&lt;/html&gt;'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup = BeautifulSoup(demo,<span class="hljs-string">"html.parser"</span>) <span class="hljs-comment">#将demo做成汤</span>
+
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup.head
+&lt;head&gt;&lt;title&gt;This is a python demo page&lt;/title&gt;&lt;/head&gt;
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup.head.contents <span class="hljs-comment">#head的儿子节点</span>
+[&lt;title&gt;This is a python demo page&lt;/title&gt;]
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup.head.children
+&lt;list_iterator object at <span class="hljs-number">0x000001CB341392E8</span>&gt;
+<span class="hljs-comment">#对于一个标签的儿子节点，不仅包括标签字典，也包括字符串节点，例如'\n'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup.body.contents
+['\n', &lt;p class="title"&gt;&lt;b&gt;The demo python introduces several python courses.&lt;/b&gt;&lt;/p&gt;, '\n', &lt;p class="course"&gt;Python is a wonderful general-purpose programming language. You can learn Python from novice to professional by tracking the following courses:
+&lt;a class="py1" href="http://www.icourse163.org/course/BIT-268001" id="link1"&gt;Basic Python&lt;/a&gt; and &lt;a class="py2" href="http://www.icourse163.org/course/BIT-1001870001" id="link2"&gt;Advanced Python&lt;/a&gt;.&lt;/p&gt;, '\n']
+<span class="hljs-meta">&gt;&gt;&gt; </span>len(soup.body.contents)
+<span class="hljs-number">5</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup.body.contents[<span class="hljs-number">1</span>]
+&lt;p class="title"&gt;&lt;b&gt;The demo python introduces several python courses.&lt;/b&gt;&lt;/p&gt;</code></pre>
+
+<p>遍历基本结构</p>
+<pre><code class="hljs python"><span class="hljs-keyword">for</span> child <span class="hljs-keyword">in</span> soup.body.children: <span class="hljs-comment">#遍历儿子节点</span>
+    print(child)
+<span class="hljs-keyword">for</span> child <span class="hljs-keyword">in</span> soup.body.descendants: <span class="hljs-comment">#遍历子孙节点</span>
+    print(child)</code></pre>
+
+
+<h3 id="上行遍历"><a href="#上行遍历" class="headerlink" title="上行遍历"></a>上行遍历</h3><p>.parent 节点的父亲标签<br>.parents 节点先辈标签的迭代类型，用于循环遍历先辈节点</p>
+<pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> requests
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup
+<span class="hljs-meta">&gt;&gt;&gt; </span>r = requests.get(<span class="hljs-string">"http://python123.io/ws/demo.html"</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>demo = r.text
+<span class="hljs-meta">&gt;&gt;&gt; </span>demo
+<span class="hljs-string">'&lt;html&gt;&lt;head&gt;&lt;title&gt;This is a python demo page&lt;/title&gt;&lt;/head&gt;\r\n&lt;body&gt;\r\n&lt;p class="title"&gt;&lt;b&gt;The demo python introduces several python courses.&lt;/b&gt;&lt;/p&gt;\r\n&lt;p class="course"&gt;Python is a wonderful general-purpose programming language. You can learn Python from novice to professional by tracking the following courses:\r\n&lt;a href="http://www.icourse163.org/course/BIT-268001" class="py1" id="link1"&gt;Basic Python&lt;/a&gt; and &lt;a href="http://www.icourse163.org/course/BIT-1001870001" class="py2" id="link2"&gt;Advanced Python&lt;/a&gt;.&lt;/p&gt;\r\n&lt;/body&gt;&lt;/html&gt;'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup = BeautifulSoup(demo,<span class="hljs-string">"html.parser"</span>) <span class="hljs-comment">#将demo做成汤</span>
+
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup.title.parent
+&lt;head&gt;&lt;title&gt;This is a python demo page&lt;/title&gt;&lt;/head&gt;
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup.html.parent<span class="hljs-comment">#html为最高级标签，故其父标签即为自己</span>
+&lt;html&gt;&lt;head&gt;&lt;title&gt;This is a python demo page&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;p class="title"&gt;&lt;b&gt;The demo python introduces several python courses.&lt;/b&gt;&lt;/p&gt;
+&lt;p class="course"&gt;Python is a wonderful general-purpose programming language. You can learn Python from novice to professional by tracking the following courses:
+
+&lt;a class="py1" href="http://www.icourse163.org/course/BIT-268001" id="link1"&gt;Basic Python&lt;/a&gt; and &lt;a class="py2" href="http://www.icourse163.org/course/BIT-1001870001" id="link2"&gt;Advanced Python&lt;/a&gt;.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup.parent
+<span class="hljs-meta">&gt;&gt;&gt; </span>print(soup.parent)
+<span class="hljs-literal">None</span></code></pre>
+
+<p>遍历结构<br>遍历所有先辈节点，包括soup本身，所以要区别判断</p>
+<pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">for</span> parent <span class="hljs-keyword">in</span> soup.a.parents: <span class="hljs-comment">#遍历a的所有先辈节点</span>
+	<span class="hljs-keyword">if</span> parent <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>: <span class="hljs-comment">#soup父节点为None</span>
+		print(parent)
+	<span class="hljs-keyword">else</span>:
+		print(parent.name)
+
+p
+body
+html
+[document]</code></pre>
+
+
+<h3 id="平行遍历"><a href="#平行遍历" class="headerlink" title="平行遍历"></a>平行遍历</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.next_sibling</td>
+<td>返回按照HTML文本顺序的下一个平行节点标签</td>
+</tr>
+<tr>
+<td>.previous_sibling</td>
+<td>返回按照HTML文本顺序的上一个平行节点标签</td>
+</tr>
+<tr>
+<td>.next_siblings</td>
+<td>迭代类型，返回按照HTML文本顺序的后续所有平行节点标签</td>
+</tr>
+<tr>
+<td>.previous_siblings</td>
+<td>迭代类型，返回按照HTML文本顺序的前续所有平行节点标签</td>
+</tr>
+</tbody></table>
+<p><strong>必须要在同一个父节点下的节点，才能进行平行遍历</strong><br><img src="https://img-blog.csdnimg.cn/20200814221917272.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> requests
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup
+<span class="hljs-meta">&gt;&gt;&gt; </span>r = requests.get(<span class="hljs-string">"http://python123.io/ws/demo.html"</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>demo = r.text
+<span class="hljs-meta">&gt;&gt;&gt; </span>demo
+<span class="hljs-string">'&lt;html&gt;&lt;head&gt;&lt;title&gt;This is a python demo page&lt;/title&gt;&lt;/head&gt;\r\n&lt;body&gt;\r\n&lt;p class="title"&gt;&lt;b&gt;The demo python introduces several python courses.&lt;/b&gt;&lt;/p&gt;\r\n&lt;p class="course"&gt;Python is a wonderful general-purpose programming language. You can learn Python from novice to professional by tracking the following courses:\r\n&lt;a href="http://www.icourse163.org/course/BIT-268001" class="py1" id="link1"&gt;Basic Python&lt;/a&gt; and &lt;a href="http://www.icourse163.org/course/BIT-1001870001" class="py2" id="link2"&gt;Advanced Python&lt;/a&gt;.&lt;/p&gt;\r\n&lt;/body&gt;&lt;/html&gt;'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup = BeautifulSoup(demo,<span class="hljs-string">"html.parser"</span>) <span class="hljs-comment">#将demo做成汤</span>
+
+<span class="hljs-comment">#在标签之间的NavigableString，即标签内非属性字符串，也构成了节点</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup.a.next_sibling <span class="hljs-comment">#任意节点的平行节点使存在NavigableString的</span>
+<span class="hljs-string">' and '</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup.a.next_sibling
+<span class="hljs-string">' and '</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup.a.next_sibling.next_sibling
+&lt;a class="py2" href="http://www.icourse163.org/course/BIT-1001870001" id="link2"&gt;Advanced Python&lt;/a&gt;
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup.a.previous_sibling
+<span class="hljs-string">'Python is a wonderful general-purpose programming language. You can learn Python from novice to professional by tracking the following courses:\r\n'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup.a.previous_sibling.previous_sibling
+&gt;&gt;&gt;</code></pre>
+
+
+<p>基础结构</p>
+<pre><code class="hljs python"><span class="hljs-keyword">for</span> sibling <span class="hljs-keyword">in</span> soup.a.next_sibling: <span class="hljs-comment">#遍历后续节点</span>
+    print(sibling)
+<span class="hljs-keyword">for</span> sibling <span class="hljs-keyword">in</span> soup.a.previous_sibling: <span class="hljs-comment">#遍历前续节点</span>
+    print(sibling)</code></pre>
+
+
+
+
+<p><img src="https://img-blog.csdnimg.cn/20200814222100593.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h1 id="基于bs4库的HTML格式输出"><a href="#基于bs4库的HTML格式输出" class="headerlink" title="基于bs4库的HTML格式输出"></a>基于bs4库的HTML格式输出</h1><p>使HTML文档格式显示更友好<br>.prettify()：<br>.prettify()为HTML文本&lt;&gt;及其内容增加更加’\n’，使其打印时自动换行<br>.prettify()可用于标签，方法：<tag>.prettify()</p>
+<pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> requests
+<span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup
+<span class="hljs-meta">&gt;&gt;&gt; </span>r = requests.get(<span class="hljs-string">"http://python123.io/ws/demo.html"</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>demo = r.text
+<span class="hljs-meta">&gt;&gt;&gt; </span>demo
+<span class="hljs-string">'&lt;html&gt;&lt;head&gt;&lt;title&gt;This is a python demo page&lt;/title&gt;&lt;/head&gt;\r\n&lt;body&gt;\r\n&lt;p class="title"&gt;&lt;b&gt;The demo python introduces several python courses.&lt;/b&gt;&lt;/p&gt;\r\n&lt;p class="course"&gt;Python is a wonderful general-purpose programming language. You can learn Python from novice to professional by tracking the following courses:\r\n&lt;a href="http://www.icourse163.org/course/BIT-268001" class="py1" id="link1"&gt;Basic Python&lt;/a&gt; and &lt;a href="http://www.icourse163.org/course/BIT-1001870001" class="py2" id="link2"&gt;Advanced Python&lt;/a&gt;.&lt;/p&gt;\r\n&lt;/body&gt;&lt;/html&gt;'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup = BeautifulSoup(demo,<span class="hljs-string">"html.parser"</span>) <span class="hljs-comment">#将demo做成汤</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup.prettify()
+<span class="hljs-string">'&lt;html&gt;\n &lt;head&gt;\n  &lt;title&gt;\n   This is a python demo page\n  &lt;/title&gt;\n &lt;/head&gt;\n &lt;body&gt;\n  &lt;p class="title"&gt;\n   &lt;b&gt;\n    The demo python introduces several python courses.\n   &lt;/b&gt;\n  &lt;/p&gt;\n  &lt;p class="course"&gt;\n   Python is a wonderful general-purpose programming language. You can learn Python from novice to professional by tracking the following courses:\n   &lt;a class="py1" href="http://www.icourse163.org/course/BIT-268001" id="link1"&gt;\n    Basic Python\n   &lt;/a&gt;\n   and\n   &lt;a class="py2" href="http://www.icourse163.org/course/BIT-1001870001" id="link2"&gt;\n    Advanced Python\n   &lt;/a&gt;\n   .\n  &lt;/p&gt;\n &lt;/body&gt;\n&lt;/html&gt;'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>print(soup.prettify())
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;title&gt;
+   This <span class="hljs-keyword">is</span> a python demo page
+  &lt;/title&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;p class="title"&gt;
+   &lt;b&gt;
+    The demo python introduces several python courses.
+   &lt;/b&gt;
+  &lt;/p&gt;
+  &lt;p class="course"&gt;
+   Python <span class="hljs-keyword">is</span> a wonderful general-purpose programming language. You can learn Python <span class="hljs-keyword">from</span> novice to professional by tracking the following courses:
+   &lt;a class="py1" href="http://www.icourse163.org/course/BIT-268001" id="link1"&gt;
+    Basic Python
+   &lt;/a&gt;
+   <span class="hljs-keyword">and</span>
+   &lt;a class="py2" href="http://www.icourse163.org/course/BIT-1001870001" id="link2"&gt;
+    Advanced Python
+   &lt;/a&gt;
+   .
+  &lt;/p&gt;
+ &lt;/body&gt;
+&lt;/html&gt;
+<span class="hljs-meta">&gt;&gt;&gt; </span>print(soup.a.prettify())
+&lt;a class="py1" href="http://www.icourse163.org/course/BIT-268001" id="link1"&gt;
+ Basic Python
+&lt;/a&gt;
+
+&gt;&gt;&gt;</code></pre>
+
+
+<h1 id="bs4库的编码"><a href="#bs4库的编码" class="headerlink" title="bs4库的编码"></a>bs4库的编码</h1><p>bs4库将任何HTML输入都变成utf‐8编码<br>Python 3.x默认支持编码是utf‐8,解析无障碍</p>
+<pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>soup = BeautifulSoup(<span class="hljs-string">"&lt;P&gt;中文&lt;/p&gt;"</span>,<span class="hljs-string">"html.parser"</span>)
+<span class="hljs-meta">&gt;&gt;&gt; </span>soup.p.string
+<span class="hljs-string">'中文'</span>
+<span class="hljs-meta">&gt;&gt;&gt; </span>print(soup.p.prettify())
+&lt;p&gt;
+ 中文
+&lt;/p&gt;</code></pre>
+
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="https://img-blog.csdnimg.cn/20200814222131823.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcyNjkxNA==,size_16,color_FFFFFF,t_70#pic_center" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h1 id="课程内容来源"><a href="#课程内容来源" class="headerlink" title="课程内容来源"></a>课程内容来源</h1><p>中国大学MOOC—北京理工大学—嵩天教授—Python网络爬虫与信息提取<br><a href="https://www.icourse163.org/course/BIT-1001870001?tid=1450316449" target="_blank" rel="noopener">https://www.icourse163.org/course/BIT-1001870001?tid=1450316449</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/python/">python</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%886%EF%BC%89%E2%80%94%E2%80%94%E4%BF%A1%E6%81%AF%E6%8F%90%E5%8F%96%E5%92%8C%E6%A0%87%E8%AE%B0%EF%BC%8C%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%B8%BD%E4%BA%86.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">初学爬虫（6）——信息提取和标记，第一次鸽了</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%884%EF%BC%89%E2%80%94%E2%80%94Requests%E5%BA%93%E5%AE%9E%E4%BE%8B%E6%93%8D%E4%BD%9C%EF%BC%8C%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%89%93%E8%84%B8.html">
+                        <span class="hidden-mobile">初学爬虫（4）——Requests库实例操作，第一次打脸</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+    <!-- APlayer 音乐播放器 -->
+    <div id="aplayer"></div>
+    <script defer src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js" ></script>
+<link  rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+<script type="text/javascript">
+  var oldLoadAp = window.onload;
+  window.onload = function () {
+    oldLoadAp && oldLoadAp();
+
+    new APlayer({
+      container: document.getElementById('aplayer'),
+      fixed: true,
+      autoplay: 'false' === 'true',
+      loop: 'all',
+      order: 'random',
+      theme: '#b7daff',
+      preload: 'none',
+      audio: [{"name":"卡农","artist":"artist","url":"/songs/卡农.mp3","/img/cover.jpg":null},{"name":"寂静之声","artist":"Bandari","url":"/songs/Bandari寂静之声.mp3","/img/cover.jpg":null},{"name":"river flows in you","artist":"Bandari","url":"/songs/river_flows_in_you.mp3","/img/cover.jpg":null},{"name":"沉醉于风中","artist":"S.E.N.S.","url":"/songs/S.E.N.S.沉醉于风中.mp3","/img/cover.jpg":null},{"name":"雅俗共赏","artist":"许嵩","url":"/songs/许嵩 - 雅俗共赏.mp3","/img/cover.jpg":null},{"name":"素颜","artist":"许嵩,许嵩 何曼婷","url":"/songs/许嵩 何曼婷 - 素颜.mp3","/img/cover.jpg":null}]
+    });
+  }
+</script>
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "初学爬虫（5）——Beautiful Soup库基础&nbsp;",
+      ],
+      cursorChar: "",
+      typeSpeed: 50,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+  
+  
+    <script>
+      !function (e, t, a) {
+        function r() {
+          for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[e].y--, s[e].scale += .004, s[e].alpha -= .013, s[e].el.style.cssText = "left:" + s[e].x + "px;top:" + s[e].y + "px;opacity:" + s[e].alpha + ";transform:scale(" + s[e].scale + "," + s[e].scale + ") rotate(45deg);background:" + s[e].color + ";z-index:99999");
+          requestAnimationFrame(r)
+        }
+
+        function n() {
+          var t = "function" == typeof e.onclick && e.onclick;
+          e.onclick = function (e) {
+            t && t(), o(e)
+          }
+        }
+
+        function o(e) {
+          var a = t.createElement("div");
+          a.className = "heart", s.push({
+            el: a,
+            x: e.clientX - 5,
+            y: e.clientY - 5,
+            scale: 1,
+            alpha: 1,
+            color: c()
+          }), t.body.appendChild(a)
+        }
+
+        function i(e) {
+          var a = t.createElement("style");
+          a.type = "text/css";
+          try {
+            a.appendChild(t.createTextNode(e))
+          } catch (t) {
+            a.styleSheet.cssText = e
+          }
+          t.getElementsByTagName("head")[0].appendChild(a)
+        }
+
+        function c() {
+          return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+        }
+
+        var s = [];
+        e.requestAnimationFrame = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || function (e) {
+          setTimeout(e, 1e3 / 60)
+        }, i(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"), n(), r()
+      }(window, document);
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

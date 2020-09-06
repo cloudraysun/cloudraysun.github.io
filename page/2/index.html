@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="en">
-
-
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -25,11 +25,11 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -38,6 +38,7 @@
 
 
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 4.2.0"></head>
 
 
@@ -136,7 +137,7 @@
           
             <li class="nav-item">
               <a class="nav-link" href="https://xydh.fun/cloudray" target="_blank" rel="noopener">
-                <i class="icon-mini-programme-fill"></i>
+                <i class="icon-birefcase-fill"></i>
                 导航
               </a>
             </li>
@@ -144,8 +145,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -158,7 +165,7 @@
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fade-in-up">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
@@ -191,21 +198,28 @@
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/05/python%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0%20%E2%80%94%20%E7%88%AC%E8%99%AB%E5%88%9D%E8%AF%86%EF%BC%8C%E9%A1%BA%E4%BE%BF%E7%AB%8B%E4%B8%AAFlag/">python进阶学习——爬虫初识，顺便立个Flag</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/python%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0%20%E2%80%94%20%E7%88%AC%E8%99%AB%E5%88%9D%E8%AF%86%EF%BC%8C%E9%A1%BA%E4%BE%BF%E7%AB%8B%E4%B8%AAFlag.html">python进阶学习——爬虫初识，顺便立个Flag</a>
+      </h1>
 
-      <a href="/2020/08/05/python%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0%20%E2%80%94%20%E7%88%AC%E8%99%AB%E5%88%9D%E8%AF%86%EF%BC%8C%E9%A1%BA%E4%BE%BF%E7%AB%8B%E4%B8%AAFlag/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/python%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0%20%E2%80%94%20%E7%88%AC%E8%99%AB%E5%88%9D%E8%AF%86%EF%BC%8C%E9%A1%BA%E4%BE%BF%E7%AB%8B%E4%B8%AAFlag.html">
           
-        
-        <div>&emsp;断续续接触python一年多了，最近几个月，由于比赛原因一直在应用python，虽然接触了许多，但是实际代码水平，感觉提升的并不多。前段时间，看到一种说法，叫输出倒逼输入，虽然也在有道云笔记上也记了不少东西，但是自己做的，未免有些敷衍，故也乘此机会开始正式的写博客，逼自己学习一把。当然，水平有限，主要为了记录自己的学习，过路的大佬看看就好。&emsp;关于python的进一步学习，我打</div>
-      </a>
+          
+            
+          
+          &emsp;断续续接触python一年多了，最近几个月，由于比赛原因一直在应用python，虽然接触了许多，但是实际代码水平，感觉提升的并不多。前段时间，看到一种说法，叫输出倒逼输入，虽然也在有道云笔记上也记了不少东西，但是自己做的，未免有些敷衍，故也乘此机会开始正式的写博客，逼自己学习一把。当然，水平有限，主要为了记录自己的学习，过路的大佬看看就好。&emsp;关于python的进一步学习，我打
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-05
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-05 22:17" pubdate>
+              2020-08-05
+            </time>
           </div>
         
         
@@ -227,27 +241,34 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/05/01/%E7%99%BE%E5%BA%A6%E9%A3%9E%E6%A1%A8AI+python%E5%9F%BA%E7%A1%80%E6%89%93%E5%8D%A1%E8%90%A5%E6%80%BB%E7%BB%93%E5%BF%83%E5%BE%97/">百度飞桨AI+python基础打卡营总结心得</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E7%99%BE%E5%BA%A6%E9%A3%9E%E6%A1%A8AI+python%E5%9F%BA%E7%A1%80%E6%89%93%E5%8D%A1%E8%90%A5%E6%80%BB%E7%BB%93%E5%BF%83%E5%BE%97.html">百度飞桨AI+python基础打卡营总结心得</a>
+      </h1>
 
-      <a href="/2020/05/01/%E7%99%BE%E5%BA%A6%E9%A3%9E%E6%A1%A8AI+python%E5%9F%BA%E7%A1%80%E6%89%93%E5%8D%A1%E8%90%A5%E6%80%BB%E7%BB%93%E5%BF%83%E5%BE%97/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/%E7%99%BE%E5%BA%A6%E9%A3%9E%E6%A1%A8AI+python%E5%9F%BA%E7%A1%80%E6%89%93%E5%8D%A1%E8%90%A5%E6%80%BB%E7%BB%93%E5%BF%83%E5%BE%97.html">
           
-        
-        <div>此次百度飞桨的python+AI的小白基础营，对我个人最大的收获便是在python的学习路上更进了一步步。参加训练营之前，学过C语言，python也大概学了好几个月，但中间中断过很多次，直到这次疫情，又重拾起了python的学习，之前参加过百度飞桨的疫情CV特辑，但只是非常勉强的完成了作业。此次的小白营，将我的学习从python的基础扩展到了爬虫和数据分析，也算是为后续的学习开了一个头。这篇总结心</div>
-      </a>
+          
+            
+          
+          此次百度飞桨的python+AI的小白基础营，对我个人最大的收获便是在python的学习路上更进了一步步。参加训练营之前，学过C语言，python也大概学了好几个月，但中间中断过很多次，直到这次疫情，又重拾起了python的学习，之前参加过百度飞桨的疫情CV特辑，但只是非常勉强的完成了作业。此次的小白营，将我的学习从python的基础扩展到了爬虫和数据分析，也算是为后续的学习开了一个头。这篇总结心
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-05-01
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-05-01 19:07" pubdate>
+              2020-05-01
+            </time>
           </div>
         
         
@@ -271,27 +292,34 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/04/07/%E5%85%B3%E4%BA%8E%E7%99%BE%E5%BA%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A07%E6%97%A5%E5%85%A5%E9%97%A8-CV%E7%96%AB%E6%83%85%E7%89%B9%E8%BE%91%E7%9A%84%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A/">关于百度深度学习7日入门-CV疫情特辑的心得体会</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/%E5%85%B3%E4%BA%8E%E7%99%BE%E5%BA%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A07%E6%97%A5%E5%85%A5%E9%97%A8-CV%E7%96%AB%E6%83%85%E7%89%B9%E8%BE%91%E7%9A%84%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A.html">关于百度深度学习7日入门-CV疫情特辑的心得体会</a>
+      </h1>
 
-      <a href="/2020/04/07/%E5%85%B3%E4%BA%8E%E7%99%BE%E5%BA%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A07%E6%97%A5%E5%85%A5%E9%97%A8-CV%E7%96%AB%E6%83%85%E7%89%B9%E8%BE%91%E7%9A%84%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/%E5%85%B3%E4%BA%8E%E7%99%BE%E5%BA%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A07%E6%97%A5%E5%85%A5%E9%97%A8-CV%E7%96%AB%E6%83%85%E7%89%B9%E8%BE%91%E7%9A%84%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A.html">
           
-        
-        <div>&emsp;本次参加了百度飞浆的7天训练营，最初的原因是从智能车卓晴老师那里引进来的，知道了这次课程和AIstudio这个平台，同时也因为自己也一直都想接触AI方面的知识和培训，但是一直没有找到合适的机会切入这一方面（当然，也是因为自己的拖延）。正好本届智能车和AI结合的颇为紧密，我也就下了决心完成这次训练营。&emsp;此次训练营，要说我个人的最大收获，便是确实的了解和接触了那些神经网络和深度学</div>
-      </a>
+          
+            
+          
+          &emsp;本次参加了百度飞浆的7天训练营，最初的原因是从智能车卓晴老师那里引进来的，知道了这次课程和AIstudio这个平台，同时也因为自己也一直都想接触AI方面的知识和培训，但是一直没有找到合适的机会切入这一方面（当然，也是因为自己的拖延）。正好本届智能车和AI结合的颇为紧密，我也就下了决心完成这次训练营。&emsp;此次训练营，要说我个人的最大收获，便是确实的了解和接触了那些神经网络和深度学
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-04-07
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-07 16:08" pubdate>
+              2020-04-07
+            </time>
           </div>
         
         
@@ -315,33 +343,40 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/03/17/my-first-blog/">my first blog</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/my-first-blog.html">my first blog</a>
+      </h1>
 
-      <a href="/2020/03/17/my-first-blog/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/my-first-blog.html">
           
-        
-        <div>##第一章
+          
+            
+          
+          ##第一章
 内容
 
 ##第二章
 内容
 
-</div>
-      </a>
+
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-03-17
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-17 00:26" pubdate>
+              2020-03-17
+            </time>
           </div>
         
         
@@ -361,28 +396,35 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/03/17/hello-world/">Hello World</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/hello-world.html">Hello World</a>
+      </h1>
 
-      <a href="/2020/03/17/hello-world/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/hello-world.html">
           
-        
-        <div>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick</div>
-      </a>
+          
+            
+          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-03-17
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-17 00:20" pubdate>
+              2020-03-17
+            </time>
           </div>
         
         
@@ -402,7 +444,7 @@ Quick</div>
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
 
@@ -460,6 +502,29 @@ Quick</div>
   
 
   
+    <!-- APlayer 音乐播放器 -->
+    <div id="aplayer"></div>
+    <script defer src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js" ></script>
+<link  rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+<script type="text/javascript">
+  var oldLoadAp = window.onload;
+  window.onload = function () {
+    oldLoadAp && oldLoadAp();
+
+    new APlayer({
+      container: document.getElementById('aplayer'),
+      fixed: true,
+      autoplay: 'false' === 'true',
+      loop: 'all',
+      order: 'random',
+      theme: '#b7daff',
+      preload: 'none',
+      audio: [{"name":"卡农","artist":"artist","url":"/songs/卡农.mp3","/img/cover.jpg":null},{"name":"寂静之声","artist":"Bandari","url":"/songs/Bandari寂静之声.mp3","/img/cover.jpg":null},{"name":"river flows in you","artist":"Bandari","url":"/songs/river_flows_in_you.mp3","/img/cover.jpg":null},{"name":"沉醉于风中","artist":"S.E.N.S.","url":"/songs/S.E.N.S.沉醉于风中.mp3","/img/cover.jpg":null},{"name":"雅俗共赏","artist":"许嵩","url":"/songs/许嵩 - 雅俗共赏.mp3","/img/cover.jpg":null},{"name":"素颜","artist":"许嵩,许嵩 何曼婷","url":"/songs/许嵩 何曼婷 - 素颜.mp3","/img/cover.jpg":null}]
+    });
+  }
+</script>
+
+  
 
   
 
@@ -502,9 +567,7 @@ Quick</div>
     
   </div>
 </footer>
-<div id="music163player">
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1206866&auto=1&height=66"></iframe>
-</div>
+
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
@@ -516,6 +579,10 @@ Quick</div>
 
   
     <script  src="/js/lazyload.js" ></script>
+  
+
+
+
   
 
 

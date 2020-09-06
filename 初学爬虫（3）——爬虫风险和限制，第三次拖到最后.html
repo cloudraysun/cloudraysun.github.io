@@ -1,0 +1,735 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/avatar.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="cloudray">
+  <meta name="keywords" content="">
+  <title>初学爬虫（3）——爬虫风险和限制 - cloudray</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Cloudray</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://xydh.fun/cloudray" target="_blank" rel="noopener">
+                <i class="icon-birefcase-fill"></i>
+                导航
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/%E7%94%B5%E5%AD%90.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      cloudray
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-08-10 22:43" pubdate>
+        August 10, 2020 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      12
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">初学爬虫（3）——爬虫风险和限制</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：August 10, 2020 pm
+                
+              </p>
+            
+            <div class="markdown-body" id="post-body">
+              <p>&emsp;这篇文章又是写在最后的时间，差不多也是一个单元的内容，这样速度有点慢了，下一篇为实战例子环节，争取明天写掉吧。</p>
+<hr>
+<h1 id="爬虫种类"><a href="#爬虫种类" class="headerlink" title="爬虫种类"></a>爬虫种类</h1><table>
+<thead>
+<tr>
+<th>种类</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>爬取网页 玩转网页</td>
+<td>爬取网站 爬取系列网站</td>
+<td>爬取全网</td>
+</tr>
+<tr>
+<td>小规模，数据量小</td>
+<td>中规模，数据规模较大</td>
+<td>大规模，搜索引擎</td>
+</tr>
+<tr>
+<td>爬取速度不敏感</td>
+<td>爬取速度敏感</td>
+<td>爬取速度关键</td>
+</tr>
+<tr>
+<td>Requests库，大于90%</td>
+<td>Scrapy库</td>
+<td>定制开发，例如百度，谷歌</td>
+</tr>
+</tbody></table>
+<h1 id="爬虫风险"><a href="#爬虫风险" class="headerlink" title="爬虫风险"></a>爬虫风险</h1><h2 id="爬虫对网站服务器的“性能骚扰”"><a href="#爬虫对网站服务器的“性能骚扰”" class="headerlink" title="爬虫对网站服务器的“性能骚扰”"></a>爬虫对网站服务器的“性能骚扰”</h2><p>Web服务器默认接收人类访问<br>受限于编写水平和目的，网络爬虫将会为Web服务器带来巨大的资源开销<br>爬虫可以以人类百倍乃至千倍的速度访问网站，给网站带来超量负担</p>
+<h2 id="爬虫的“法律风险”"><a href="#爬虫的“法律风险”" class="headerlink" title="爬虫的“法律风险”"></a>爬虫的“法律风险”</h2><p>服务器的数据有产权归属，当爬虫获取这些数据并以此牟利时，将带来法律风险</p>
+<h2 id="网络爬虫的隐私泄露"><a href="#网络爬虫的隐私泄露" class="headerlink" title="网络爬虫的隐私泄露"></a>网络爬虫的隐私泄露</h2><p>网络爬虫可能具备突破简单访问控制的能力，获得被保护数据，从而泄露个人隐私。</p>
+<h1 id="网络爬虫的限制"><a href="#网络爬虫的限制" class="headerlink" title="网络爬虫的限制"></a>网络爬虫的限制</h1><h2 id="来源审查"><a href="#来源审查" class="headerlink" title="来源审查"></a>来源审查</h2><p>判断User‐Agent进行限制<br>检查来访HTTP协议头的User‐Agent域，只响应浏览器或友好爬虫的访问<br>只响应一定范围内的访问，超出此范围，则判定为恶意爬虫，不做响应。<br>此方法有一定的技术要求</p>
+<h2 id="发布公告：Robots协议"><a href="#发布公告：Robots协议" class="headerlink" title="发布公告：Robots协议"></a>发布公告：Robots协议</h2><p>类似于公告板<br>告知所有爬虫网站的爬取策略，要求爬虫遵守<br>仅仅只是发布，是否遵守由网络爬虫自身决定。</p>
+<h1 id="Robots协议"><a href="#Robots协议" class="headerlink" title="Robots协议"></a>Robots协议</h1><p>Robots Exclusion Standard，网络爬虫排除标准，可称为Robots.txt</p>
+<p>网站通过Robots协议告诉搜索引擎哪些页面可以抓取，哪些页面不能抓取。<br>Robots的用法有两种：<br>1：告诉搜索引擎哪些页面你不能抓（默认其他的就可以抓）<br>2：告诉搜索引擎你只能抓取哪些页面（默认其他的不可以抓）</p>
+<p>在网站根目录下的robots.txt文件（注：小写），形式类似于以下举例。</p>
+<h2 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h2><p><a href="https://www.jd.com/robots.txt" target="_blank" rel="noopener">京东Robots协议</a></p>
+<pre><code class="hljs html">User-agent: *    #对于任意来源网络爬虫，都应遵守以下协议
+Disallow: /?*    #任何爬虫都不允许访问以 ?* 开头的路径
+Disallow: /pop/*.html  #任何爬虫都不允许访问符合pop/*.html 的路径
+Disallow: /pinpai/*.html?* #不允许访问符合pinpai/*.html?*  的路径
+User-agent: EtaoSpider  #对于以下四种爬虫，禁止访问任何京东页面
+Disallow: / 
+User-agent: HuihuiSpider 
+Disallow: / 
+User-agent: GwdangSpider 
+Disallow: / 
+User-agent: WochachaSpider 
+Disallow: /</code></pre>
+<p>其它例子：<br>百度：<a href="http://www.baidu.com/robots.txt" target="_blank" rel="noopener">http://www.baidu.com/robots.txt</a><br>新浪：<a href="http://news.sina.com.cn/robots.txt" target="_blank" rel="noopener">http://news.sina.com.cn/robots.txt</a><br>QQ：<a href="http://www.qq.com/robots.txt" target="_blank" rel="noopener">http://www.qq.com/robots.txt</a><br>QQ新闻：<a href="http://news.qq.com/robots.txt" target="_blank" rel="noopener">http://news.qq.com/robots.txt</a><br>教育部网站：<a href="http://www.moe.edu.cn/robots.txt" target="_blank" rel="noopener">http://www.moe.edu.cn/robots.txt</a> （无robots协议）<br>如果一个网站没有robots.txt文件，则代表这个网站允许所有爬虫无限制爬取内容</p>
+<h2 id="Robots协议基本语法"><a href="#Robots协议基本语法" class="headerlink" title="Robots协议基本语法"></a>Robots协议基本语法</h2><pre><code class="hljs html"># 注释，*代表所有，/代表根目录
+User‐agent: *  #代表哪些爬虫
+Disallow: /    #不允许这些爬虫访问资源目录</code></pre>
+
+<p>或</p>
+<pre><code class="hljs html">User‐agent: *  #代表哪些爬虫
+Allow:允许的目录或文件</code></pre>
+
+<p>robots.txt文件详解<br><a href="http://blog.sina.com.cn/s/blog_68e95e7d0100rjfh.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_68e95e7d0100rjfh.html</a></p>
+<h2 id="Robots-txt协议遵守方式"><a href="#Robots-txt协议遵守方式" class="headerlink" title="Robots.txt协议遵守方式"></a>Robots.txt协议遵守方式</h2><p>网络爬虫：<br>自动或人工识别robots.txt，再进行内容爬取<br>可以人工根据协议编写爬虫，也可以自动识别协议后限制爬虫<br><strong>约束性：</strong><br>Robots协议是建议但非约束性，网络爬虫可以不遵守，但存在法律风险</p>
+<table>
+<thead>
+<tr>
+<th>种类</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>访问量很小：可以遵守，访问量较大：建议遵守</td>
+<td>非商业且偶尔：建议遵守，商业利益：必须遵守</td>
+<td>爬取全网</td>
+</tr>
+<tr>
+<td>玩转网页 爬取网页</td>
+<td>爬取网站  爬取系列网站</td>
+<td>必须遵守</td>
+</tr>
+<tr>
+<td>原则：类人行为可不参考Robots协议</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>类人行为：服务器访问次数较少，并对服务器不造成巨大资源影响的爬虫，因这种爬虫和人类访问网页相差不大，故可不参考Robots协议</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><h2 id="各大常用搜索引擎爬虫"><a href="#各大常用搜索引擎爬虫" class="headerlink" title="各大常用搜索引擎爬虫"></a>各大常用搜索引擎爬虫</h2><p><strong><em>注：蜘蛛名称区分大小写</em></strong></p>
+<p>百度：Baiduspider<br>360：360Spider<br>搜狗：Sogou News Spider（不止）<br>有道：YoudaoBot，YodaoBot<br>谷歌：GoogleBot（不止）<br>雅虎：yahoo-slurp</p>
+<p>参考：<br>1.<a href="https://www.cnblogs.com/cocowool/p/5002546.html" target="_blank" rel="noopener">https://www.cnblogs.com/cocowool/p/5002546.html</a><br>2.<a href="https://blog.csdn.net/weixin_44711613/article/details/88076847" target="_blank" rel="noopener">https://blog.csdn.net/weixin_44711613/article/details/88076847</a></p>
+<h2 id="自动生成robots-txt"><a href="#自动生成robots-txt" class="headerlink" title="自动生成robots.txt"></a>自动生成robots.txt</h2><p><a href="https://robots.51240.com/" target="_blank" rel="noopener">https://robots.51240.com/</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/python/">python</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%884%EF%BC%89%E2%80%94%E2%80%94Requests%E5%BA%93%E5%AE%9E%E4%BE%8B%E6%93%8D%E4%BD%9C%EF%BC%8C%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%89%93%E8%84%B8.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">初学爬虫（4）——Requests库实例操作，第一次打脸</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%882%EF%BC%89%E2%80%94%E2%80%94Requests%E5%BA%93%E5%9F%BA%E7%A1%80%EF%BC%8C%E9%99%A9%E4%BA%9B%E6%89%93%E8%84%B8.html">
+                        <span class="hidden-mobile">初学爬虫（2）——Requests库基础，险些打脸</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+    <!-- APlayer 音乐播放器 -->
+    <div id="aplayer"></div>
+    <script defer src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js" ></script>
+<link  rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+<script type="text/javascript">
+  var oldLoadAp = window.onload;
+  window.onload = function () {
+    oldLoadAp && oldLoadAp();
+
+    new APlayer({
+      container: document.getElementById('aplayer'),
+      fixed: true,
+      autoplay: 'false' === 'true',
+      loop: 'all',
+      order: 'random',
+      theme: '#b7daff',
+      preload: 'none',
+      audio: [{"name":"卡农","artist":"artist","url":"/songs/卡农.mp3","/img/cover.jpg":null},{"name":"寂静之声","artist":"Bandari","url":"/songs/Bandari寂静之声.mp3","/img/cover.jpg":null},{"name":"river flows in you","artist":"Bandari","url":"/songs/river_flows_in_you.mp3","/img/cover.jpg":null},{"name":"沉醉于风中","artist":"S.E.N.S.","url":"/songs/S.E.N.S.沉醉于风中.mp3","/img/cover.jpg":null},{"name":"雅俗共赏","artist":"许嵩","url":"/songs/许嵩 - 雅俗共赏.mp3","/img/cover.jpg":null},{"name":"素颜","artist":"许嵩,许嵩 何曼婷","url":"/songs/许嵩 何曼婷 - 素颜.mp3","/img/cover.jpg":null}]
+    });
+  }
+</script>
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "初学爬虫（3）——爬虫风险和限制&nbsp;",
+      ],
+      cursorChar: "",
+      typeSpeed: 50,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+  
+  
+    <script>
+      !function (e, t, a) {
+        function r() {
+          for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[e].y--, s[e].scale += .004, s[e].alpha -= .013, s[e].el.style.cssText = "left:" + s[e].x + "px;top:" + s[e].y + "px;opacity:" + s[e].alpha + ";transform:scale(" + s[e].scale + "," + s[e].scale + ") rotate(45deg);background:" + s[e].color + ";z-index:99999");
+          requestAnimationFrame(r)
+        }
+
+        function n() {
+          var t = "function" == typeof e.onclick && e.onclick;
+          e.onclick = function (e) {
+            t && t(), o(e)
+          }
+        }
+
+        function o(e) {
+          var a = t.createElement("div");
+          a.className = "heart", s.push({
+            el: a,
+            x: e.clientX - 5,
+            y: e.clientY - 5,
+            scale: 1,
+            alpha: 1,
+            color: c()
+          }), t.body.appendChild(a)
+        }
+
+        function i(e) {
+          var a = t.createElement("style");
+          a.type = "text/css";
+          try {
+            a.appendChild(t.createTextNode(e))
+          } catch (t) {
+            a.styleSheet.cssText = e
+          }
+          t.getElementsByTagName("head")[0].appendChild(a)
+        }
+
+        function c() {
+          return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+        }
+
+        var s = [];
+        e.requestAnimationFrame = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || function (e) {
+          setTimeout(e, 1e3 / 60)
+        }, i(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"), n(), r()
+      }(window, document);
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

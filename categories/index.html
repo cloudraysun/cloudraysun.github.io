@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="en">
-
-
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -25,11 +25,11 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -38,6 +38,7 @@
 
 
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 4.2.0"></head>
 
 
@@ -136,7 +137,7 @@
           
             <li class="nav-item">
               <a class="nav-link" href="https://xydh.fun/cloudray" target="_blank" rel="noopener">
-                <i class="icon-mini-programme-fill"></i>
+                <i class="icon-birefcase-fill"></i>
                 导航
               </a>
             </li>
@@ -144,8 +145,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -158,7 +165,7 @@
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container text-center white-text fade-in-up">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
@@ -199,7 +206,7 @@
     <div class="category row">
       <a
         class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckdl4tbfm0001fcv72g3102nl" role="tab" data-toggle="collapse" href="#collapse-ckdl4tbfm0001fcv72g3102nl"
+        id="heading-ckequ3zqd0003s0v77ljd7vmz" role="tab" data-toggle="collapse" href="#collapse-ckequ3zqd0003s0v77ljd7vmz"
         aria-expanded="false"
       >
         python
@@ -212,77 +219,77 @@
       <div class="category-collapse">
         
           
-  <div id="collapse-ckdl4tbfm0001fcv72g3102nl" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckdl4tbfm0001fcv72g3102nl">
+  <div id="collapse-ckequ3zqd0003s0v77ljd7vmz" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckequ3zqd0003s0v77ljd7vmz">
     
     
     
       
       
-        <a href="/2020/08/29/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%8811%EF%BC%89%E2%80%94%E2%80%94%E8%82%A1%E7%A5%A8%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%EF%BC%8C%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E6%9A%82%E5%91%8A%E4%B8%80%E6%AE%B5%E8%90%BD/" class="list-group-item list-group-item-action">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%8811%EF%BC%89%E2%80%94%E2%80%94%E8%82%A1%E7%A5%A8%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%EF%BC%8C%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E6%9A%82%E5%91%8A%E4%B8%80%E6%AE%B5%E8%90%BD.html" class="list-group-item list-group-item-action">
           <span class="category-post">初学爬虫（11）——股票数据分析，爬虫学习暂告一段落</span>
         </a>
       
     
       
       
-        <a href="/2020/08/24/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%8810%EF%BC%89%E2%80%94%E2%80%94%E5%AE%9E%E4%BE%8B2%E5%88%99/" class="list-group-item list-group-item-action">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%8810%EF%BC%89%E2%80%94%E2%80%94%E5%AE%9E%E4%BE%8B2%E5%88%99.html" class="list-group-item list-group-item-action">
           <span class="category-post">初学爬虫（10）——实例2则</span>
         </a>
       
     
       
       
-        <a href="/2020/08/22/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%889%EF%BC%89%E2%80%94%E2%80%94Scrapy%E6%A1%86%E6%9E%B6%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/" class="list-group-item list-group-item-action">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%889%EF%BC%89%E2%80%94%E2%80%94Scrapy%E6%A1%86%E6%9E%B6%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8.html" class="list-group-item list-group-item-action">
           <span class="category-post">初学爬虫（9）——Scrapy框架基础使用</span>
         </a>
       
     
       
       
-        <a href="/2020/08/20/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%888%EF%BC%89%E2%80%94%E2%80%94scrapy%E6%A1%86%E6%9E%B6%E7%90%86%E8%AE%BA/" class="list-group-item list-group-item-action">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%888%EF%BC%89%E2%80%94%E2%80%94scrapy%E6%A1%86%E6%9E%B6%E7%90%86%E8%AE%BA.html" class="list-group-item list-group-item-action">
           <span class="category-post">初学爬虫（8）——scrapy框架理论</span>
         </a>
       
     
       
       
-        <a href="/2020/08/18/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%887%EF%BC%89%E2%80%94%E2%80%94%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88re%E5%BA%93%EF%BC%89%E5%85%A5%E9%97%A8/" class="list-group-item list-group-item-action">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%887%EF%BC%89%E2%80%94%E2%80%94%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88re%E5%BA%93%EF%BC%89%E5%85%A5%E9%97%A8.html" class="list-group-item list-group-item-action">
           <span class="category-post">初学爬虫（7）——正则表达式（re库）入门</span>
         </a>
       
     
       
       
-        <a href="/2020/08/17/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%886%EF%BC%89%E2%80%94%E2%80%94%E4%BF%A1%E6%81%AF%E6%8F%90%E5%8F%96%E5%92%8C%E6%A0%87%E8%AE%B0%EF%BC%8C%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%B8%BD%E4%BA%86/" class="list-group-item list-group-item-action">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%886%EF%BC%89%E2%80%94%E2%80%94%E4%BF%A1%E6%81%AF%E6%8F%90%E5%8F%96%E5%92%8C%E6%A0%87%E8%AE%B0%EF%BC%8C%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%B8%BD%E4%BA%86.html" class="list-group-item list-group-item-action">
           <span class="category-post">初学爬虫（6）——信息提取和标记，第一次鸽了</span>
         </a>
       
     
       
       
-        <a href="/2020/08/14/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%885%EF%BC%89%E2%80%94%E2%80%94Beautiful%20Soup%E5%BA%93%E5%9F%BA%E7%A1%80/" class="list-group-item list-group-item-action">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%885%EF%BC%89%E2%80%94%E2%80%94Beautiful%20Soup%E5%BA%93%E5%9F%BA%E7%A1%80.html" class="list-group-item list-group-item-action">
           <span class="category-post">初学爬虫（5）——Beautiful Soup库基础</span>
         </a>
       
     
       
       
-        <a href="/2020/08/12/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%884%EF%BC%89%E2%80%94%E2%80%94Requests%E5%BA%93%E5%AE%9E%E4%BE%8B%E6%93%8D%E4%BD%9C%EF%BC%8C%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%89%93%E8%84%B8/" class="list-group-item list-group-item-action">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%884%EF%BC%89%E2%80%94%E2%80%94Requests%E5%BA%93%E5%AE%9E%E4%BE%8B%E6%93%8D%E4%BD%9C%EF%BC%8C%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%89%93%E8%84%B8.html" class="list-group-item list-group-item-action">
           <span class="category-post">初学爬虫（4）——Requests库实例操作，第一次打脸</span>
         </a>
       
     
       
       
-        <a href="/2020/08/10/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%883%EF%BC%89%E2%80%94%E2%80%94%E7%88%AC%E8%99%AB%E9%A3%8E%E9%99%A9%E5%92%8C%E9%99%90%E5%88%B6%EF%BC%8C%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8B%96%E5%88%B0%E6%9C%80%E5%90%8E/" class="list-group-item list-group-item-action">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%883%EF%BC%89%E2%80%94%E2%80%94%E7%88%AC%E8%99%AB%E9%A3%8E%E9%99%A9%E5%92%8C%E9%99%90%E5%88%B6%EF%BC%8C%E7%AC%AC%E4%B8%89%E6%AC%A1%E6%8B%96%E5%88%B0%E6%9C%80%E5%90%8E.html" class="list-group-item list-group-item-action">
           <span class="category-post">初学爬虫（3）——爬虫风险和限制</span>
         </a>
       
     
       
       
-        <a href="/2020/08/08/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%882%EF%BC%89%E2%80%94%E2%80%94Requests%E5%BA%93%E5%9F%BA%E7%A1%80%EF%BC%8C%E9%99%A9%E4%BA%9B%E6%89%93%E8%84%B8/" class="list-group-item list-group-item-action">
+        <a href="/%E5%88%9D%E5%AD%A6%E7%88%AC%E8%99%AB%EF%BC%882%EF%BC%89%E2%80%94%E2%80%94Requests%E5%BA%93%E5%9F%BA%E7%A1%80%EF%BC%8C%E9%99%A9%E4%BA%9B%E6%89%93%E8%84%B8.html" class="list-group-item list-group-item-action">
           <span class="category-post">初学爬虫（2）——Requests库基础，险些打脸</span>
         </a>
       
@@ -304,7 +311,7 @@
     <div class="category row">
       <a
         class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckdl42uy10000fgv7g7ms4ldo" role="tab" data-toggle="collapse" href="#collapse-ckdl42uy10000fgv7g7ms4ldo"
+        id="heading-ckequ3zqk0008s0v7dt9adxiy" role="tab" data-toggle="collapse" href="#collapse-ckequ3zqk0008s0v7dt9adxiy"
         aria-expanded="false"
       >
         测试
@@ -317,21 +324,21 @@
       <div class="category-collapse">
         
           
-  <div id="collapse-ckdl42uy10000fgv7g7ms4ldo" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckdl42uy10000fgv7g7ms4ldo">
+  <div id="collapse-ckequ3zqk0008s0v7dt9adxiy" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckequ3zqk0008s0v7dt9adxiy">
     
     
     
       
       
-        <a href="/2020/03/17/my-first-blog/" class="list-group-item list-group-item-action">
+        <a href="/my-first-blog.html" class="list-group-item list-group-item-action">
           <span class="category-post">my first blog</span>
         </a>
       
     
       
       
-        <a href="/2020/03/17/hello-world/" class="list-group-item list-group-item-action">
+        <a href="/hello-world.html" class="list-group-item list-group-item-action">
           <span class="category-post">Hello World</span>
         </a>
       
@@ -347,7 +354,7 @@
     <div class="category row">
       <a
         class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckdl4tbfu0006fcv78c9d2kfg" role="tab" data-toggle="collapse" href="#collapse-ckdl4tbfu0006fcv78c9d2kfg"
+        id="heading-ckequ3zr8000ss0v74q7i7vzd" role="tab" data-toggle="collapse" href="#collapse-ckequ3zr8000ss0v74q7i7vzd"
         aria-expanded="false"
       >
         深度学习
@@ -360,21 +367,21 @@
       <div class="category-collapse">
         
           
-  <div id="collapse-ckdl4tbfu0006fcv78c9d2kfg" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckdl4tbfu0006fcv78c9d2kfg">
+  <div id="collapse-ckequ3zr8000ss0v74q7i7vzd" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckequ3zr8000ss0v74q7i7vzd">
     
     
     
       
       
-        <a href="/2020/05/01/%E7%99%BE%E5%BA%A6%E9%A3%9E%E6%A1%A8AI+python%E5%9F%BA%E7%A1%80%E6%89%93%E5%8D%A1%E8%90%A5%E6%80%BB%E7%BB%93%E5%BF%83%E5%BE%97/" class="list-group-item list-group-item-action">
+        <a href="/%E7%99%BE%E5%BA%A6%E9%A3%9E%E6%A1%A8AI+python%E5%9F%BA%E7%A1%80%E6%89%93%E5%8D%A1%E8%90%A5%E6%80%BB%E7%BB%93%E5%BF%83%E5%BE%97.html" class="list-group-item list-group-item-action">
           <span class="category-post">百度飞桨AI+python基础打卡营总结心得</span>
         </a>
       
     
       
       
-        <a href="/2020/04/07/%E5%85%B3%E4%BA%8E%E7%99%BE%E5%BA%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A07%E6%97%A5%E5%85%A5%E9%97%A8-CV%E7%96%AB%E6%83%85%E7%89%B9%E8%BE%91%E7%9A%84%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A/" class="list-group-item list-group-item-action">
+        <a href="/%E5%85%B3%E4%BA%8E%E7%99%BE%E5%BA%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A07%E6%97%A5%E5%85%A5%E9%97%A8-CV%E7%96%AB%E6%83%85%E7%89%B9%E8%BE%91%E7%9A%84%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A.html" class="list-group-item list-group-item-action">
           <span class="category-post">关于百度深度学习7日入门-CV疫情特辑的心得体会</span>
         </a>
       
@@ -426,6 +433,29 @@
   
 
   
+    <!-- APlayer 音乐播放器 -->
+    <div id="aplayer"></div>
+    <script defer src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js" ></script>
+<link  rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+<script type="text/javascript">
+  var oldLoadAp = window.onload;
+  window.onload = function () {
+    oldLoadAp && oldLoadAp();
+
+    new APlayer({
+      container: document.getElementById('aplayer'),
+      fixed: true,
+      autoplay: 'false' === 'true',
+      loop: 'all',
+      order: 'random',
+      theme: '#b7daff',
+      preload: 'none',
+      audio: [{"name":"卡农","artist":"artist","url":"/songs/卡农.mp3","/img/cover.jpg":null},{"name":"寂静之声","artist":"Bandari","url":"/songs/Bandari寂静之声.mp3","/img/cover.jpg":null},{"name":"river flows in you","artist":"Bandari","url":"/songs/river_flows_in_you.mp3","/img/cover.jpg":null},{"name":"沉醉于风中","artist":"S.E.N.S.","url":"/songs/S.E.N.S.沉醉于风中.mp3","/img/cover.jpg":null},{"name":"雅俗共赏","artist":"许嵩","url":"/songs/许嵩 - 雅俗共赏.mp3","/img/cover.jpg":null},{"name":"素颜","artist":"许嵩,许嵩 何曼婷","url":"/songs/许嵩 何曼婷 - 素颜.mp3","/img/cover.jpg":null}]
+    });
+  }
+</script>
+
+  
 
   
 
@@ -468,9 +498,7 @@
     
   </div>
 </footer>
-<div id="music163player">
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1206866&auto=1&height=66"></iframe>
-</div>
+
 <!-- SCRIPTS -->
 <script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
 <script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
@@ -482,6 +510,10 @@
 
   
     <script  src="/js/lazyload.js" ></script>
+  
+
+
+
   
 
 
